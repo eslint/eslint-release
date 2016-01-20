@@ -4,11 +4,11 @@
   "description": "ESLint Release Tools",
   "main": "./lib/release-ops",
   "bin": {
-    "eslint-release": "./bin/eslint-release"
+    "eslint-release": "./bin/eslint-release.js"
   },
   "scripts": {
     "test": "exit 0",
-    "release": "node ./bin/eslint-release"
+    "release": "node ./bin/eslint-release.js"
   },
   "files": [
     "bin",
