@@ -1,3 +1,7 @@
+v0.1.4 - January 20, 2016
+
+* f258fd4 Fix: Binary script filename (Nicholas C. Zakas)
+
 v0.1.3 - January 20, 2016
 
 * c783701 Fix: Add path to binary (Nicholas C. Zakas)
