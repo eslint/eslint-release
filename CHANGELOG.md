@@ -1,3 +1,7 @@
+v0.1.2 - January 20, 2016
+
+* bed64d9 Fix: Another typo in the script (Nicholas C. Zakas)
+
 v0.1.1 - January 20, 2016
 
 * 4e8adcd Fix: Typo on method (Nicholas C. Zakas)
