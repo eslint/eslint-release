@@ -3,6 +3,9 @@
   "version": "0.1.2",
   "description": "ESLint Release Tools",
   "main": "./lib/release-ops",
+  "bin": {
+      "eslint-release": "./bin/eslint-release"
+  },
   "scripts": {
     "test": "exit 0",
     "release": "node ./bin/eslint-release"
