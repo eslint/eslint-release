@@ -1,0 +1,44 @@
+{
+  "name": "eslint-release",
+  "version": "0.0.0",
+  "description": "ESLint Release Tools",
+  "main": "./lib/release-ops",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eslint/eslint-release.git"
+  },
+  "keywords": [
+    "build",
+    "release",
+    "semver",
+    "versioning",
+    "changelog"
+  ],
+  "author": "Nicholas C. Zakas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eslint/eslint-release/issues"
+  },
+  "homepage": "https://github.com/eslint/eslint-release#readme",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "sinon": "^1.17.2"
+  },
+  "dependencies": {
+    "dateformat": "^1.0.12",
+    "ejs": "^2.3.4",
+    "linefix": "^0.1.1",
+    "npm-license": "^0.3.1",
+    "semver": "^5.1.0",
+    "shelljs": "^0.5.3",
+    "shelljs-nodecli": "^0.1.1"
+  }
+}
