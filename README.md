@@ -77,5 +77,5 @@ Join our [Chatroom](https://gitter.im/eslint/eslint)
 
 [npm-image]: https://img.shields.io/npm/v/eslint-release.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/eslint-release
-[downloads-image]: http://img.shields.io/npm/dm/eslint-release.svg?style=flat-square
+[downloads-image]: https://img.shields.io/npm/dm/eslint-release.svg?style=flat-square
 [downloads-url]: https://www.npmjs.com/package/eslint-release
