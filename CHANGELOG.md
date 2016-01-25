@@ -1,3 +1,7 @@
+v0.2.0 - January 25, 2016
+
+* 3685b90 Update: Run linefix in silent mode (Nicholas C. Zakas)
+
 v0.1.5 - January 25, 2016
 
 * 8526da4 Fix: Ensure linefix works (fixes #1) (Nicholas C. Zakas)
