@@ -1,3 +1,8 @@
+v0.1.5 - January 25, 2016
+
+* 8526da4 Fix: Ensure linefix works (fixes #1) (Nicholas C. Zakas)
+* 0bcaad1 Docs: Update README (Nicholas C. Zakas)
+
 v0.1.4 - January 20, 2016
 
 * f258fd4 Fix: Binary script filename (Nicholas C. Zakas)
