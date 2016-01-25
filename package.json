@@ -3,6 +3,9 @@
   "version": "0.1.4",
   "description": "ESLint Release Tools",
   "main": "./lib/release-ops",
+  "engines": {
+    "node": ">=0.12"
+  },
   "bin": {
     "eslint-release": "./bin/eslint-release.js"
   },
