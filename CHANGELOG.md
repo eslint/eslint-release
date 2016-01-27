@@ -1,3 +1,9 @@
+v0.3.0-alpha.0 - January 27, 2016
+
+* 5e7bb49 Fix: Ensure linefix is working for prerelease (Nicholas C. Zakas)
+* f270343 New: Add eslint-prerelease and refactor (Nicholas C. Zakas)
+* a135fc2 New: Calculate prerelease version (Nicholas C. Zakas)
+
 v0.2.0 - January 25, 2016
 
 * 3685b90 Update: Run linefix in silent mode (Nicholas C. Zakas)
