@@ -28,10 +28,10 @@ To run a regular release:
 $ eslint-release
 ```
 
-To run a prerelease, you need to include the release version:
+To run a prerelease, you need to include the prerelease identifier:
 
 ```
-$ eslint-release 2.0.0-alpha.1
+$ eslint-prerelease alpha
 ```
 
 You can optionally include the release tool in another Node.js script:
@@ -44,7 +44,7 @@ var ReleaseOps = require("eslint-release");
 
 When you run the release tool for a regular release, the following steps take place:
 
-1. Runs `npm install` and `npm prune` to ensure that the correct packages are being used
+1. Updates your npm packages to ensure you're running everything with the version that would be installed with a fresh install
 1. Runs `npm test` to validate the release
 1. Gathers the commit message for each commit since the last release
 1. Calculates the next release version based on the [commit message format](http://eslint.org/docs/developer-guide/contributing/pull-requests#step-2-make-your-changes) of the changes since the last release

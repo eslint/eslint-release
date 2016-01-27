@@ -7,11 +7,13 @@
     "node": ">=0.12"
   },
   "bin": {
-    "eslint-release": "./bin/eslint-release.js"
+    "eslint-release": "./bin/eslint-release.js",
+    "eslint-prerelease": "./bin/eslint-prerelease.js"
   },
   "scripts": {
-    "test": "exit 0",
-    "release": "node ./bin/eslint-release.js"
+    "test": "mocha tests/lib/*.js",
+    "release": "node ./bin/eslint-release.js",
+    "prerelease": "node ./bin/eslint-prerelease.js"
   },
   "files": [
     "bin",
@@ -36,6 +38,7 @@
   "homepage": "https://github.com/eslint/eslint-release#readme",
   "devDependencies": {
     "chai": "^3.4.1",
+    "leche": "^2.1.1",
     "mocha": "^2.3.4",
     "sinon": "^1.17.2"
   },

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @fileoverview Main CLI that is run via the eslint-release command.
+ * @fileoverview Main CLI that is run via the eslint-prerelease command.
  * @author Nicholas C. Zakas
  * @copyright 2016 Nicholas C. Zakas. All rights reserved.
  * MIT License. See LICENSE file in root directory for full license.
@@ -21,7 +21,9 @@ var ReleaseOps = require("../lib/release-ops");
 
 /*
  * Usage:
- * $ eslint-release
+ * $ eslint-release beta
  */
+var args = process.argv.slice(2),
+    prereleaseId = (args.length ? args[0] : null);
 
-ReleaseOps.release();
+ReleaseOps.prerelease(prereleaseId);
