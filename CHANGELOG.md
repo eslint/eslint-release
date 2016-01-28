@@ -1,3 +1,8 @@
+v0.3.0-alpha.1 - January 28, 2016
+
+* 84998af Docs: Fixed changelog error (Nicholas C. Zakas)
+* dac304e New: Refactor shell commands, add tests (Nicholas C. Zakas)
+
 v0.3.0-alpha.0 - January 27, 2016
 
 * 2b049a4 Fix: Use correct version for npm version (Nicholas C. Zakas)
