@@ -21,9 +21,15 @@ var ReleaseOps = require("../lib/release-ops");
 
 /*
  * Usage:
- * $ eslint-release beta
+ * $ eslint-prerelease beta
  */
 var args = process.argv.slice(2),
     prereleaseId = (args.length ? args[0] : null);
+
+// there must be a prerelease ID
+if (!prereleaseId) {
+    console.log("Missing prerelease identifier (alpha, beta, rc, etc.).");
+    process.exit(1);
+}
 
 ReleaseOps.prerelease(prereleaseId);
