@@ -8,7 +8,7 @@ This release tool has been extracted from the [ESLint](https://github.com/eslint
 
 Please note that while this project is shared freely, it is not intended to be a general-purpose utility. The functionality is highly specific to how ESLint projects handle releases and the project will remain very focused on this use case.
 
-**Warning:** There are minimal tests for this project. Use at your own risk.
+**Warning:** There are minimal tests for this project and the API is rapidly changing. Use at your own risk.
 
 ## Installation
 
