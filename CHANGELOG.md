@@ -1,3 +1,7 @@
+v0.3.0-beta.0 - February 10, 2016
+
+* 2ce0cdd Fix: Remove license check until it's sync (Nicholas C. Zakas)
+
 v0.3.0-alpha.2 - February 10, 2016
 
 * 1bacf23 Update: Refactor to remove prerelease method (Nicholas C. Zakas)
