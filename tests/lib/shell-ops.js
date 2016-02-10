@@ -49,8 +49,9 @@ describe("ShellOps", function() {
 
     describe("execSilent()", function() {
 
-        var childProcess = require("child_process"),
-            CMD = "foo bar baz",
+        var childProcess = require("child_process");
+
+        var CMD = "foo bar baz",
             ENV = ShellOps.getModifiedEnv(),
             sandbox;
 
@@ -98,8 +99,9 @@ describe("ShellOps", function() {
 
     describe("exec()", function() {
 
-        var childProcess = require("child_process"),
-            CMD = "foo bar baz",
+        var childProcess = require("child_process");
+
+        var CMD = "foo bar baz",
             ENV = ShellOps.getModifiedEnv(),
             sandbox;
 

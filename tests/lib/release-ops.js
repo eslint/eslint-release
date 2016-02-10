@@ -32,12 +32,13 @@ describe("ReleaseOps", function() {
             ["2.0.0-alpha.0", "alpha", "minor", "2.0.0-alpha.1"],
             ["2.0.0-alpha.0", "alpha", "patch", "2.0.0-alpha.1"],
 
-            ["2.0.0-alpha.1", "beta", "patch", "2.0.0-beta.0"],
+            ["2.0.0-alpha.1", "beta", "patch", "2.0.0-beta.0"]
 
         ], function(version, prereleaseId, releaseType, expected) {
 
             it("should return the correct next version", function() {
                 var result = ReleaseOps.getPrereleaseVersion(version, prereleaseId, releaseType);
+                assert.equal(result, expected);
             });
 
         });
