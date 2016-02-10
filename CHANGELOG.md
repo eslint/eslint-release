@@ -1,3 +1,9 @@
+v0.3.0-alpha.2 - February 10, 2016
+
+* 1bacf23 Update: Refactor to remove prerelease method (Nicholas C. Zakas)
+* 9899534 Build: Add ESLint and fix linting errors (Nicholas C. Zakas)
+* 1852ee3 Update: Better output from execSilent (Nicholas C. Zakas)
+
 v0.3.0-alpha.1 - January 28, 2016
 
 * 84998af Docs: Fixed changelog error (Nicholas C. Zakas)
