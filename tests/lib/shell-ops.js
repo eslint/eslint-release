@@ -83,13 +83,15 @@ describe("ShellOps", function() {
             assert.equal(result, "hi");
         });
 
-        it("should throw an error when execSync throws an error", function() {
+        it("should call exit with an exit code when execSync throws an error", function() {
 
-            sandbox.stub(childProcess, "execSync").throws(new Error("Boo!"));
+            var err = new Error("Boo!");
+            err.output = [null, "Hi"];
+            err.status = 2;
 
-            assert.throws(function() {
-                ShellOps.execSilent(CMD);
-            }, /Boo/);
+            sandbox.stub(childProcess, "execSync").throws(err);
+            sandbox.mock(ShellOps).expects("exit").withExactArgs(err.status);
+            ShellOps.execSilent(CMD);
         });
 
     });
@@ -122,13 +124,15 @@ describe("ShellOps", function() {
             ShellOps.exec(CMD);
         });
 
-        it("should throw an error when execSync throws an error", function() {
+        it("should exit with an exit code when execSync throws an error", function() {
 
-            sandbox.stub(childProcess, "execSync").throws(new Error("Boo!"));
+            var err = new Error("Boo!");
+            err.output = [null, "Hi"];
+            err.status = 2;
 
-            assert.throws(function() {
-                ShellOps.exec(CMD);
-            }, /Boo/);
+            sandbox.stub(childProcess, "execSync").throws(err);
+            sandbox.mock(ShellOps).expects("exit").withExactArgs(err.status);
+            ShellOps.exec(CMD);
         });
 
     });
