@@ -1,3 +1,7 @@
+v0.3.0-beta.1 - February 10, 2016
+
+* ec06fa5 Fix: Change script names (Nicholas C. Zakas)
+
 v0.3.0-beta.0 - February 10, 2016
 
 * 2ce0cdd Fix: Remove license check until it's sync (Nicholas C. Zakas)
