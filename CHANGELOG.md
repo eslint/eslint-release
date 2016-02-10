@@ -1,3 +1,7 @@
+v0.3.0 - February 10, 2016
+
+* 304a51c Docs: Update README (Nicholas C. Zakas)
+
 v0.3.0-beta.1 - February 10, 2016
 
 * ec06fa5 Fix: Change script names (Nicholas C. Zakas)
