@@ -49,12 +49,10 @@
   "dependencies": {
     "bundle-dependencies": "^1.0.2",
     "dateformat": "^1.0.12",
-    "ejs": "^2.3.4",
     "linefix": "^0.1.1",
     "npm-license": "^0.3.1",
     "semver": "^5.1.0",
-    "shelljs": "^0.5.3",
-    "shelljs-nodecli": "^0.1.1"
+    "shelljs": "^0.5.3"
   },
   "bundledDependencies": [
     "bundle-dependencies",
