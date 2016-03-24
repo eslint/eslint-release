@@ -1,3 +1,8 @@
+v0.4.0-alpha.4 - March 24, 2016
+
+* 2578f31 Fix: Changelog output (Nicholas C. Zakas)
+* a05950f Docs: Fix changelog (Nicholas C. Zakas)
+
 v0.4.0-alpha.3 - March 24, 2016
 
 * db3a8a0 Update: Output changelog to console for easier debugging (Nicholas C. Zakas)
