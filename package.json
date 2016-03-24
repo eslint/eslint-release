@@ -57,11 +57,9 @@
   "bundledDependencies": [
     "bundle-dependencies",
     "dateformat",
-    "ejs",
     "linefix",
     "npm-license",
     "semver",
-    "shelljs",
-    "shelljs-nodecli"
+    "shelljs"
   ]
 }
