@@ -47,6 +47,7 @@
     "sinon": "^1.17.2"
   },
   "dependencies": {
+    "bundle-dependencies": "^1.0.2",
     "dateformat": "^1.0.12",
     "ejs": "^2.3.4",
     "linefix": "^0.1.1",
