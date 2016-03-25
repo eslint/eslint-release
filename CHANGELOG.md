@@ -1,3 +1,10 @@
+v0.4.0 - March 25, 2016
+
+* badd709 0.4.0-alpha.5 (Nicholas C. Zakas)
+* 3ec4fe5 Build: package.json and changelog update for 0.4.0-alpha.5 (Nicholas C. Zakas)
+* de0acb9 Fix: Parsing commits for changelog (fixes #5) (Brandon Mills)
+* 15a2bd8 Revert mistakenly pushed 0.4.0-alpha.5 changes (Brandon Mills)
+
 v0.4.0-alpha.5 - March 25, 2016
 
 * de0acb9 Fix: Parsing commits for changelog (fixes #5) (Brandon Mills)
