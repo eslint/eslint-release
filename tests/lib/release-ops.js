@@ -226,6 +226,29 @@ describe("ReleaseOps", function() {
             });
         });
 
+        it("should gracefully handle unformatted commit messages", function() {
+            var logs = [
+                    "* 059f6bd 0.4.0-alpha.4 (Nicholas C. Zakas)",
+                    "* 6b498ed Build: package.json and changelog update for 0.4.0-alpha.4 (Nicholas C. Zakas)",
+                    "* 2578f31 Fix: Changelog output (Nicholas C. Zakas)"
+                ],
+                releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("0.4.0-alpha.4", logs, "alpha");
+
+            assert.deepEqual(releaseInfo, {
+                version: "0.4.0-alpha.5",
+                type: "patch",
+                changelog: {
+                    build: [
+                        "* 6b498ed Build: package.json and changelog update for 0.4.0-alpha.4 (Nicholas C. Zakas)"
+                    ],
+                    fix: [
+                        "* 2578f31 Fix: Changelog output (Nicholas C. Zakas)"
+                    ]
+                },
+                rawChangelog: logs.join("\n")
+            });
+        });
+
     });
 
 });
