@@ -1,7 +1,3 @@
-v0.4.0-alpha.5 - March 25, 2016
-
-
-
 v0.4.0-alpha.4 - March 24, 2016
 
 * 2578f31 Fix: Changelog output (Nicholas C. Zakas)
