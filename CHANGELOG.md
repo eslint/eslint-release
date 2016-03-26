@@ -1,3 +1,8 @@
+v0.4.1 - March 26, 2016
+
+* 6ec439c Build: Pin ESLint to last good version (Nicholas C. Zakas)
+* 8af49ea Fix: Ensure bundled dependencies are correct (fixes #8) (Nicholas C. Zakas)
+
 v0.4.0 - March 25, 2016
 
 * badd709 0.4.0-alpha.5 (Nicholas C. Zakas)
