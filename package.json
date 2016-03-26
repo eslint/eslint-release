@@ -40,7 +40,7 @@
   "homepage": "https://github.com/eslint/eslint-release#readme",
   "devDependencies": {
     "chai": "^3.4.1",
-    "eslint": "^2.0.0-rc.1",
+    "eslint": "2.4.0",
     "eslint-config-eslint": "^3.0.0",
     "leche": "^2.1.1",
     "mocha": "^2.3.4",
@@ -53,13 +53,5 @@
     "npm-license": "^0.3.1",
     "semver": "^5.1.0",
     "shelljs": "^0.5.3"
-  },
-  "bundledDependencies": [
-    "bundle-dependencies",
-    "dateformat",
-    "linefix",
-    "npm-license",
-    "semver",
-    "shelljs"
-  ]
+  }
 }
