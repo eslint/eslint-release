@@ -1,3 +1,7 @@
+v0.5.0 - March 28, 2016
+
+* f6c1c7b Update: Remove dep bundling (Nicholas C. Zakas)
+
 v0.4.1 - March 26, 2016
 
 * 6ec439c Build: Pin ESLint to last good version (Nicholas C. Zakas)
