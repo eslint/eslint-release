@@ -1,8 +1,8 @@
 /**
  * @fileoverview Tests for release ops.
  * @author Nicholas C. Zakas
- * @copyright 2016 Nicholas C. Zakas. All rights reserved.
- * MIT License. See LICENSE in root directory for full license.
+ * @copyright jQuery Foundation and other contributors, https://jquery.org/
+ * MIT License
  */
 
 "use strict";
