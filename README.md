@@ -34,6 +34,12 @@ To run a prerelease, you need to include the prerelease identifier:
 $ eslint-prerelease alpha
 ```
 
+To run a release in a CI environment, be sure to set `NPM_TOKEN` environment variable and then run:
+
+```
+$ eslint-ci-release
+```
+
 You can optionally include the release tool in another Node.js script:
 
 ```js

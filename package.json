@@ -15,7 +15,8 @@
     "lint": "eslint .",
     "alpharelease": "node ./bin/eslint-prerelease.js alpha",
     "betarelease": "node ./bin/eslint-prerelease.js beta",
-    "release": "node ./bin/eslint-release.js"
+    "release": "node ./bin/eslint-release.js",
+    "ci-release": "node ./bin/eslint-ci-release.js"
   },
   "files": [
     "bin",
