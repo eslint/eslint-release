@@ -1,3 +1,9 @@
+v0.6.2 - July 28, 2016
+
+* da78663 Fix: Call git clean correctly (Nicholas C. Zakas)
+* 6e26c4f Fix: git clean typo (Nicholas C. Zakas)
+* 3728c40 Build: Manually update version (Nicholas C. Zakas)
+
 v0.5.0 - March 28, 2016
 
 * f6c1c7b Update: Remove dep bundling (Nicholas C. Zakas)
