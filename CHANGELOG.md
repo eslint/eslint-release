@@ -1,3 +1,8 @@
+v0.6.3 - July 29, 2016
+
+* ab47ccf Fix: CI release doesn't have to npm install (Nicholas C. Zakas)
+* 5c66639 Fix: Add bin eslint-ci-release (Nicholas C. Zakas)
+
 v0.6.2 - July 28, 2016
 
 * da78663 Fix: Call git clean correctly (Nicholas C. Zakas)
