@@ -1,3 +1,7 @@
+v0.6.4 - July 29, 2016
+
+* 24588f8 Docs: Update README (Nicholas C. Zakas)
+
 v0.6.3 - July 29, 2016
 
 * ab47ccf Fix: CI release doesn't have to npm install (Nicholas C. Zakas)
