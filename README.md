@@ -50,16 +50,16 @@ var ReleaseOps = require("eslint-release");
 
 When you run the release tool for a regular release, the following steps take place:
 
-1. Updates your npm packages to ensure you're running everything with the version that would be installed with a fresh install
+1. Updates your npm packages to ensure you're running everything with the version that would be installed with a fresh install (only outside of CI release)
 1. Runs `npm test` to validate the release
 1. Gathers the commit message for each commit since the last release
 1. Calculates the next release version based on the [commit message format](http://eslint.org/docs/developer-guide/contributing/pull-requests#step-2-make-your-changes) of the changes since the last release
 1. Updates `CHANGELOG.md` and commits the changes
 1. Runs `npm version` to update the version
-1. Pushes the repository to origin/master with tags
+1. Pushes the repository to origin/master with tags (only outside of CI release)
 1. Converts all line endings to Unix style
 1. Publishes the package to npm
-1. Reverts any line ending changes
+1. Reverts any file changes
 
 When you do a prerelease, the same steps are taken except that package is published to npm under the `next` tag instead of `latest`.
 
