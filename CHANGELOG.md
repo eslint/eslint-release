@@ -1,3 +1,13 @@
+v0.8.0 - July 30, 2016
+
+* b19005b Fix: Manually fix version (Nicholas C. Zakas)
+* 3a0a884 Fix: Publish to GitHub repository location (Nicholas C. Zakas)
+* 3733c93 Chore: Add JSDoc comment to appease ESLint (Nicholas C. Zakas)
+* 8ae2552 Fix: repository format check (Nicholas C. Zakas)
+* df3f595 New: Publish release notes to GitHub (Nicholas C. Zakas)
+* 9e47449 Update: Add checks for missing info in CI release (Nicholas C. Zakas)
+* c444056 Chore: Change repository string in package.json (Nicholas C. Zakas)
+
 v0.6.4 - July 29, 2016
 
 * 24588f8 Docs: Update README (Nicholas C. Zakas)
