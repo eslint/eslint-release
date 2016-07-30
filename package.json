@@ -1,6 +1,6 @@
 {
   "name": "eslint-release",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "description": "ESLint Release Tools",
   "main": "./lib/release-ops",
   "engines": {
