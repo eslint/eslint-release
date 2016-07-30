@@ -1,3 +1,9 @@
+v0.8.2 - July 30, 2016
+
+* da006bb Chore: Reformat a bit (Nicholas C. Zakas)
+* 035a6b7 0.8.1 (ESLint Jenkins)
+* 39c4d38 Build: package.json and changelog update for 0.8.1 (ESLint Jenkins)
+
 v0.8.1 - July 30, 2016
 
 * e8e914a Fix: Ensure GitHub release is created (Nicholas C. Zakas)
