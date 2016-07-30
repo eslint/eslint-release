@@ -46,20 +46,11 @@
     "sinon": "^1.17.2"
   },
   "dependencies": {
-    "bundle-dependencies": "^1.0.2",
     "dateformat": "^1.0.12",
     "github-api": "^2.3.0",
     "linefix": "^0.1.1",
     "npm-license": "^0.3.1",
     "semver": "^5.1.0",
     "shelljs": "^0.5.3"
-  },
-  "bundledDependencies": [
-    "bundle-dependencies",
-    "dateformat",
-    "linefix",
-    "npm-license",
-    "semver",
-    "shelljs"
-  ]
+  }
 }
