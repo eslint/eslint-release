@@ -1,3 +1,8 @@
+v0.8.3 - July 30, 2016
+
+* 79d39c8 Fix: Add commit hash to GitHub release (Nicholas C. Zakas)
+* f1a0cf8 Chore: Formatting changes (Nicholas C. Zakas)
+
 v0.8.2 - July 30, 2016
 
 * da006bb Chore: Reformat a bit (Nicholas C. Zakas)
