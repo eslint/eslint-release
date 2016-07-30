@@ -24,4 +24,5 @@ var ReleaseOps = require("../lib/release-ops");
  * $ eslint-release
  */
 
-ReleaseOps.release(null, true);
+var releaseInfo = ReleaseOps.release(null, true);
+ReleaseOps.publishReleaseToGitHub(releaseInfo);
