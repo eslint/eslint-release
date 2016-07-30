@@ -1,3 +1,7 @@
+v0.8.1 - July 30, 2016
+
+* e8e914a Fix: Ensure GitHub release is created (Nicholas C. Zakas)
+
 v0.8.0 - July 30, 2016
 
 * b19005b Fix: Manually fix version (Nicholas C. Zakas)
