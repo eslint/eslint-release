@@ -1,3 +1,7 @@
+v0.8.4 - July 30, 2016
+
+* e8d94d5 Chore: Remove dependency bundling (Nicholas C. Zakas)
+
 v0.8.3 - July 30, 2016
 
 * 79d39c8 Fix: Add commit hash to GitHub release (Nicholas C. Zakas)
