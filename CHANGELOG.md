@@ -1,3 +1,7 @@
+v0.9.1 - July 30, 2016
+
+* e2d4f16 Fix: Don't delete generated files (Nicholas C. Zakas)
+
 v0.9.0 - July 30, 2016
 
 * cf8b300 New: eslint-gh-release script (Nicholas C. Zakas)
