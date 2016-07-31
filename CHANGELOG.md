@@ -1,3 +1,7 @@
+v0.9.0 - July 30, 2016
+
+* cf8b300 New: eslint-gh-release script (Nicholas C. Zakas)
+
 v0.8.4 - July 30, 2016
 
 * e8d94d5 Chore: Remove dependency bundling (Nicholas C. Zakas)
