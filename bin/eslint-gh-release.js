@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @fileoverview Main CLI that is run via the eslint-ci-release command.
+ * @fileoverview Main CLI that is run via the eslint-gh-release command.
  * @author Nicholas C. Zakas
  * @copyright jQuery Foundation and other contributors, https://jquery.org/
  * MIT License
@@ -13,7 +13,8 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var ReleaseOps = require("../lib/release-ops");
+var path = require("path"),
+    ReleaseOps = require("../lib/release-ops");
 
 //------------------------------------------------------------------------------
 // Execution
@@ -21,7 +22,8 @@ var ReleaseOps = require("../lib/release-ops");
 
 /*
  * Usage:
- * $ eslint-ci-release
+ * $ eslint-gh-release
  */
 
-ReleaseOps.release(null, true);
+var releaseInfo = require(path.resolve(process.cwd(), "./.releaseInfo.json"));
+ReleaseOps.publishReleaseToGitHub(releaseInfo);
