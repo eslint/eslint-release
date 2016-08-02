@@ -1,3 +1,7 @@
+v0.9.2 - August 2, 2016
+
+* 1dd0a5f Docs: Update README with CI info (Nicholas C. Zakas)
+
 v0.9.1 - July 30, 2016
 
 * e2d4f16 Fix: Don't delete generated files (Nicholas C. Zakas)
