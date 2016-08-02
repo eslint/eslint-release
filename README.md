@@ -18,7 +18,7 @@ You can install the ESLint release tool using [npm](https://npmjs.com):
 $ npm install eslint-release --save-dev
 ```
 
-## Usage
+## Local Usage
 
 The ESLint release tool is designed to be used on the command line and has two modes: regular release and prerelease.
 
@@ -34,17 +34,36 @@ To run a prerelease, you need to include the prerelease identifier:
 $ eslint-prerelease alpha
 ```
 
-To run a release in a CI environment, be sure to set `NPM_TOKEN` environment variable and then run:
-
-```
-$ eslint-ci-release
-```
-
 You can optionally include the release tool in another Node.js script:
 
 ```js
 var ReleaseOps = require("eslint-release");
 ```
+
+## CI Usage
+
+When run in a CI environment like Jenkins, the ESLint release tool has different commands that allow for incorporation into more complex release scripts. To start, you'll need to define two environment variables:
+
+* `NPM_TOKEN` - a token to use for `npm publish`. The token must be from a user that has permission to publish the package.
+* `ESLINT_GITHUB_TOKEN` - a token for a GitHub user that has `repo` permission (used for posting release notes).
+
+To run a release in a CI environment:
+
+```
+$ eslint-ci-release
+```
+
+This will generate a new version, update the changelog, and publish to npm but will not push back to GitHub. It will also generate a `.releaseInfo.json` file.
+
+Your CI system must manually push the repository changes to GitHub (including the version tag). After that, you can publish release notes by running:
+
+```
+$ eslint-gh-release
+```
+
+This command looks for the `.releaseInfo.json` file and uses that information to determine where to post release notes and what to post.
+
+**Note:** In Jenkins, `eslint-gh-release` must be run as the last step in the build (typically in a post-build script that occurs after the GitHub repository has been updated).
 
 ## What It Does
 
