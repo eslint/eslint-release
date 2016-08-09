@@ -9,6 +9,7 @@
   "bin": {
     "eslint-release": "./bin/eslint-release.js",
     "eslint-ci-release": "./bin/eslint-ci-release.js",
+    "eslint-gh-release": "./bin/eslint-gh-release.js",
     "eslint-prerelease": "./bin/eslint-prerelease.js"
   },
   "scripts": {
