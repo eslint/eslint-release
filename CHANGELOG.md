@@ -1,3 +1,7 @@
+v0.9.3 - August 10, 2016
+
+* 8463836 Fix: Include eslint-gh-release bin entry (Nicholas C. Zakas)
+
 v0.9.2 - August 2, 2016
 
 * 1dd0a5f Docs: Update README with CI info (Nicholas C. Zakas)
