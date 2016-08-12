@@ -1,3 +1,7 @@
+v0.10.0 - August 12, 2016
+
+* 10eafdf New: CI release publishes to GitHub (Nicholas C. Zakas)
+
 v0.9.3 - August 10, 2016
 
 * 8463836 Fix: Include eslint-gh-release bin entry (Nicholas C. Zakas)
