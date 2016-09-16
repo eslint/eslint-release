@@ -1,3 +1,7 @@
+v0.10.1 - September 16, 2016
+
+* f470e71 Fix: Pin github-api version (Nicholas C. Zakas)
+
 v0.10.0 - August 12, 2016
 
 * 10eafdf New: CI release publishes to GitHub (Nicholas C. Zakas)
