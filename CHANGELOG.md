@@ -1,3 +1,9 @@
+v0.10.2 - March 19, 2017
+
+* d5e1049 Fix: commit only modifies changelog (#13) (alberto)
+* 90537a5 Build: Add travis config (#14) (alberto)
+* 8e73497 Docs: Update license copyright (Nicholas C. Zakas)
+
 v0.10.1 - September 16, 2016
 
 * f470e71 Fix: Pin github-api version (Nicholas C. Zakas)
