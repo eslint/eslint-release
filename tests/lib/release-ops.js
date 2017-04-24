@@ -249,6 +249,29 @@ describe("ReleaseOps", function() {
             });
         });
 
+        // https://github.com/eslint/eslint-release/issues/15
+        it("should gracefully handle commit shorthashes longer than 7 characters", function() {
+            var logs = [
+                    "* 6b498edabcde Build: package.json and changelog update for 0.4.0-alpha.4 (Nicholas C. Zakas)",
+                    "* 2578f31000 Fix: Changelog output (Nicholas C. Zakas)"
+                ],
+                releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("0.4.0-alpha.4", logs, "alpha");
+
+            assert.deepEqual(releaseInfo, {
+                version: "0.4.0-alpha.5",
+                type: "patch",
+                changelog: {
+                    build: [
+                        "* 6b498edabcde Build: package.json and changelog update for 0.4.0-alpha.4 (Nicholas C. Zakas)"
+                    ],
+                    fix: [
+                        "* 2578f31000 Fix: Changelog output (Nicholas C. Zakas)"
+                    ]
+                },
+                rawChangelog: logs.join("\n")
+            });
+        });
+
     });
 
 });
