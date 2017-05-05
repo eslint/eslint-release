@@ -1,3 +1,7 @@
+v0.10.3 - May 5, 2017
+
+* 6e4bd2d Fix: gracefully handle shorthashes longer than 7 characters (fixes #15) (#16) (Teddy Katz)
+
 v0.10.2 - March 19, 2017
 
 * d5e1049 Fix: commit only modifies changelog (#13) (alberto)
