@@ -1,3 +1,8 @@
+v0.11.0 - March 30, 2018
+
+* af2cac8 Update: publish release notes to GitHub when doing a prerelease (#20) (Teddy Katz)
+* 2731ce1 Fix: Check if file exists first (#19) (Ilya Volodin)
+
 v0.10.3 - May 5, 2017
 
 * 6e4bd2d Fix: gracefully handle shorthashes longer than 7 characters (fixes #15) (#16) (Teddy Katz)
