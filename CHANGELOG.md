@@ -1,3 +1,7 @@
+v0.11.1 - March 30, 2018
+
+* 628b493 Fix: Mark prerelease notes as "prereleases" on GitHub (#21) (Teddy Katz)
+
 v0.11.0 - March 30, 2018
 
 * af2cac8 Update: publish release notes to GitHub when doing a prerelease (#20) (Teddy Katz)
