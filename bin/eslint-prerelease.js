@@ -32,4 +32,5 @@ if (!prereleaseId) {
     process.exit(1);    // eslint-disable-line no-process-exit
 }
 
-ReleaseOps.release(prereleaseId);
+var releaseInfo = ReleaseOps.release(prereleaseId);
+ReleaseOps.publishReleaseToGitHub(releaseInfo);
