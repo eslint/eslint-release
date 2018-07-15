@@ -15,7 +15,7 @@ Please note that while this project is shared freely, it is not intended to be a
 You can install the ESLint release tool using [npm](https://npmjs.com):
 
 ```
-$ npm install eslint-release --save-dev
+$ npm install eslint-release -g
 ```
 
 ## Local Usage
