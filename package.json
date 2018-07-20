@@ -10,7 +10,8 @@
     "eslint-release": "./bin/eslint-release.js",
     "eslint-ci-release": "./bin/eslint-ci-release.js",
     "eslint-gh-release": "./bin/eslint-gh-release.js",
-    "eslint-prerelease": "./bin/eslint-prerelease.js"
+    "eslint-prerelease": "./bin/eslint-prerelease.js",
+    "eslint-publish": "./bin/eslint-publish.js"
   },
   "scripts": {
     "test": "npm run lint && mocha tests/lib/*.js",
