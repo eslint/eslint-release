@@ -7,19 +7,17 @@
     "node": ">=0.12"
   },
   "bin": {
-    "eslint-release": "./bin/eslint-release.js",
-    "eslint-ci-release": "./bin/eslint-ci-release.js",
-    "eslint-gh-release": "./bin/eslint-gh-release.js",
-    "eslint-prerelease": "./bin/eslint-prerelease.js"
+    "eslint-generate-release": "./bin/eslint-generate-release.js",
+    "eslint-generate-prerelease": "./bin/eslint-generate-prerelease.js",
+    "eslint-publish-release": "./bin/eslint-publish-release.js"
   },
   "scripts": {
     "test": "npm run lint && mocha tests/lib/*.js",
     "lint": "eslint .",
-    "alpharelease": "node ./bin/eslint-prerelease.js alpha",
-    "betarelease": "node ./bin/eslint-prerelease.js beta",
-    "release": "node ./bin/eslint-release.js",
-    "gh-release": "node ./bin/eslint-gh-release.js",
-    "ci-release": "node ./bin/eslint-ci-release.js"
+    "generate-alpharelease": "node ./bin/eslint-generate-prerelease.js alpha",
+    "generate-betarelease": "node ./bin/eslint-generate-prerelease.js beta",
+    "generate-release": "node ./bin/eslint-generate-release.js",
+    "publish-release": "node ./bin/eslint-publish-release.js"
   },
   "files": [
     "bin",
@@ -51,7 +49,6 @@
     "dateformat": "^1.0.12",
     "github-api": "2.3.0",
     "linefix": "^0.1.1",
-    "npm-license": "^0.3.1",
     "semver": "^5.1.0",
     "shelljs": "^0.5.3"
   }

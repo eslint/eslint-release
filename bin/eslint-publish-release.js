@@ -21,7 +21,7 @@ var ReleaseOps = require("../lib/release-ops");
 
 /*
  * Usage:
- * $ eslint-release
+ * $ eslint-publish-release
  */
 
-ReleaseOps.release();
+ReleaseOps.publishRelease();

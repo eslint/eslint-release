@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @fileoverview Main CLI that is run via the eslint-gh-release command.
+ * @fileoverview Main CLI that is run via the eslint-prerelease command.
  * @author Nicholas C. Zakas
  * @copyright jQuery Foundation and other contributors, https://jquery.org/
  * MIT License
@@ -13,8 +13,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var path = require("path"),
-    ReleaseOps = require("../lib/release-ops");
+var ReleaseOps = require("../lib/release-ops");
 
 //------------------------------------------------------------------------------
 // Execution
@@ -22,8 +21,15 @@ var path = require("path"),
 
 /*
  * Usage:
- * $ eslint-gh-release
+ * $ eslint-generate-prerelease beta
  */
+var args = process.argv.slice(2),
+    prereleaseId = (args.length ? args[0] : null);
 
-var releaseInfo = require(path.resolve(process.cwd(), "./.releaseInfo.json"));
-ReleaseOps.publishReleaseToGitHub(releaseInfo);
+// there must be a prerelease ID
+if (!prereleaseId) {
+    console.log("Missing prerelease identifier (alpha, beta, rc, etc.).");
+    process.exit(1);    // eslint-disable-line no-process-exit
+}
+
+ReleaseOps.generateRelease(prereleaseId);
