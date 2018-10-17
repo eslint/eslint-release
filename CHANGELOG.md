@@ -1,3 +1,8 @@
+v1.1.0 - October 17, 2018
+
+* 34d6f55 Update: avoid unnecessary checks for environment variables (#29) (Teddy Katz)
+* 5c5c361 Fix: avoid overwriting the .npmrc file in a repository (#30) (Teddy Katz)
+
 v1.0.0 - October 17, 2018
 
 * 7444907 Fix: avoid outputting broken publish command when OTP is provided (#28) (Teddy Katz)
