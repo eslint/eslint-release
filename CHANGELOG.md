@@ -1,3 +1,8 @@
+v1.0.0 - October 17, 2018
+
+* 7444907 Fix: avoid outputting broken publish command when OTP is provided (#28) (Teddy Katz)
+* 9d0445a Breaking: separate releases into "generate" and "publish" phase (#27) (Teddy Katz)
+
 v0.11.1 - March 30, 2018
 
 * 628b493 Fix: Mark prerelease notes as "prereleases" on GitHub (#21) (Teddy Katz)
