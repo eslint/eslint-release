@@ -1,3 +1,8 @@
+v1.2.0 - November 9, 2018
+
+* [`1f776d1`](https://github.com/eslint/eslint-release/commit/1f776d1b18bd8e0f03692fb2398b959d69171cd8) Update: avoid printing TOTP to output when publishing (#31) (Teddy Katz)
+* [`73b3f38`](https://github.com/eslint/eslint-release/commit/73b3f3839a614eaf896e9fd21501290a9ad67099) Update: include links to commits on GitHub in changelogs (#32) (Teddy Katz)
+
 v1.1.0 - October 17, 2018
 
 * 34d6f55 Update: avoid unnecessary checks for environment variables (#29) (Teddy Katz)
