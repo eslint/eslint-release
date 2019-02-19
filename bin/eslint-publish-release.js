@@ -13,7 +13,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var ReleaseOps = require("../lib/release-ops");
+const ReleaseOps = require("../lib/release-ops");
 
 //------------------------------------------------------------------------------
 // Execution

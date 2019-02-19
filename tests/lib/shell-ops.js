@@ -11,7 +11,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var assert = require("chai").assert,
+const assert = require("chai").assert,
     sinon = require("sinon"),
     path = require("path"),
     leche = require("leche"),
@@ -21,16 +21,17 @@ var assert = require("chai").assert,
 // Tests
 //------------------------------------------------------------------------------
 
-describe("ShellOps", function() {
+describe("ShellOps", () => {
 
-    var PATH = process.env.PATH,
+    const PATH = process.env.PATH,
         NODE_MODULES_PATH = path.resolve("./node_modules/.bin");
 
-    describe("getModifiedEnv()", function() {
+    describe("getModifiedEnv()", () => {
 
-        it("should modify path correctly when on Windows", function() {
-            var env = ShellOps.getModifiedEnv("win32");
-            assert.equal(env.PATH, NODE_MODULES_PATH + ";" + PATH);
+        it("should modify path correctly when on Windows", () => {
+            const env = ShellOps.getModifiedEnv("win32");
+
+            assert.strictEqual(env.PATH, `${NODE_MODULES_PATH};${PATH}`);
         });
 
         leche.withData([
@@ -38,32 +39,33 @@ describe("ShellOps", function() {
             "freebsd",
             "linux",
             "sunos"
-        ], function(platform) {
-            it("should modify path correctly when on Unix OS", function() {
-                var env = ShellOps.getModifiedEnv(platform);
-                assert.equal(env.PATH, NODE_MODULES_PATH + ":" + PATH);
+        ], platform => {
+            it("should modify path correctly when on Unix OS", () => {
+                const env = ShellOps.getModifiedEnv(platform);
+
+                assert.strictEqual(env.PATH, `${NODE_MODULES_PATH}:${PATH}`);
             });
         });
 
     });
 
-    describe("execSilent()", function() {
+    describe("execSilent()", () => {
 
-        var childProcess = require("child_process");
+        const childProcess = require("child_process");
 
-        var CMD = "foo bar baz",
-            ENV = ShellOps.getModifiedEnv(),
-            sandbox;
+        const CMD = "foo bar baz",
+            ENV = ShellOps.getModifiedEnv();
+        let sandbox;
 
-        beforeEach(function() {
+        beforeEach(() => {
             sandbox = sinon.sandbox.create();
         });
 
-        afterEach(function() {
+        afterEach(() => {
             sandbox.verifyAndRestore();
         });
 
-        it("should call execSync with cwd and modified environment", function() {
+        it("should call execSync with cwd and modified environment", () => {
 
             sandbox.mock(childProcess)
                 .expects("execSync")
@@ -76,17 +78,19 @@ describe("ShellOps", function() {
             ShellOps.execSilent(CMD);
         });
 
-        it("should call execSync and pass through the return value", function() {
+        it("should call execSync and pass through the return value", () => {
 
             sandbox.stub(childProcess, "execSync").returns("hi");
 
-            var result = ShellOps.execSilent(CMD);
-            assert.equal(result, "hi");
+            const result = ShellOps.execSilent(CMD);
+
+            assert.strictEqual(result, "hi");
         });
 
-        it("should call exit with an exit code when execSync throws an error", function() {
+        it("should call exit with an exit code when execSync throws an error", () => {
 
-            var err = new Error("Boo!");
+            const err = new Error("Boo!");
+
             err.output = [null, "Hi"];
             err.status = 2;
 
@@ -97,23 +101,23 @@ describe("ShellOps", function() {
 
     });
 
-    describe("exec()", function() {
+    describe("exec()", () => {
 
-        var childProcess = require("child_process");
+        const childProcess = require("child_process");
 
-        var CMD = "foo bar baz",
-            ENV = ShellOps.getModifiedEnv(),
-            sandbox;
+        const CMD = "foo bar baz",
+            ENV = ShellOps.getModifiedEnv();
+        let sandbox;
 
-        beforeEach(function() {
+        beforeEach(() => {
             sandbox = sinon.sandbox.create();
         });
 
-        afterEach(function() {
+        afterEach(() => {
             sandbox.verifyAndRestore();
         });
 
-        it("should call execSync with cwd and modified environment", function() {
+        it("should call execSync with cwd and modified environment", () => {
 
             sandbox.mock(childProcess)
                 .expects("execSync")
@@ -126,9 +130,10 @@ describe("ShellOps", function() {
             ShellOps.exec(CMD);
         });
 
-        it("should exit with an exit code when execSync throws an error", function() {
+        it("should exit with an exit code when execSync throws an error", () => {
 
-            var err = new Error("Boo!");
+            const err = new Error("Boo!");
+
             err.output = [null, "Hi"];
             err.status = 2;
 
