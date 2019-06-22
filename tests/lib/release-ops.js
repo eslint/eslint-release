@@ -11,7 +11,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var assert = require("chai").assert,
+const assert = require("chai").assert,
     leche = require("leche"),
     ReleaseOps = require("../../lib/release-ops");
 
@@ -19,9 +19,9 @@ var assert = require("chai").assert,
 // Tests
 //------------------------------------------------------------------------------
 
-describe("ReleaseOps", function() {
+describe("ReleaseOps", () => {
 
-    describe("getPrereleaseVersion()", function() {
+    describe("getPrereleaseVersion()", () => {
 
         leche.withData([
             ["1.0.0", "alpha", "major", "2.0.0-alpha.0"],
@@ -34,28 +34,29 @@ describe("ReleaseOps", function() {
 
             ["2.0.0-alpha.1", "beta", "patch", "2.0.0-beta.0"]
 
-        ], function(version, prereleaseId, releaseType, expected) {
+        ], (version, prereleaseId, releaseType, expected) => {
 
-            it("should return the correct next version", function() {
-                var result = ReleaseOps.getPrereleaseVersion(version, prereleaseId, releaseType);
-                assert.equal(result, expected);
+            it("should return the correct next version", () => {
+                const result = ReleaseOps.getPrereleaseVersion(version, prereleaseId, releaseType);
+
+                assert.strictEqual(result, expected);
             });
 
         });
 
     });
 
-    describe("calculateReleaseFromGitLogs()", function() {
+    describe("calculateReleaseFromGitLogs()", () => {
 
-        it("should create a patch release when only bug fixes are present", function() {
-            var logs = [
+        it("should create a patch release when only bug fixes are present", () => {
+            const logs = [
                     "* 5b4812a956935358bf6e48f4d75a9bc998b3fe41 Fix: Something (Foo Bar)",
                     "* 00a3526f3a6560e4f91d390725b9a70f5d974f89 Docs: Something else (foobar)",
                     "* 24b2fdb310b89d7aad134df7e8863a5e055ac63f Fix: Something else (Foo B. Baz)"
                 ],
                 releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("1.0.0", logs);
 
-            assert.deepEqual(releaseInfo, {
+            assert.deepStrictEqual(releaseInfo, {
                 version: "1.0.1",
                 type: "patch",
                 changelog: {
@@ -75,8 +76,8 @@ describe("ReleaseOps", function() {
             });
         });
 
-        it("should create a minor release when enhancements are present", function() {
-            var logs = [
+        it("should create a minor release when enhancements are present", () => {
+            const logs = [
                     "* 34d6f550b2c87e61a70cb201abd3eadebb370453 Fix: Something (Author Name)",
                     "* 5c5c361cc338d284cac6d170ab7e105e213e1307 Docs: Something else (authorname)",
                     "* bcdc618488d12184e32a7ba170b443450c3e9e48 Fix: Something else (First Last)",
@@ -84,7 +85,7 @@ describe("ReleaseOps", function() {
                 ],
                 releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("1.0.0", logs);
 
-            assert.deepEqual(releaseInfo, {
+            assert.deepStrictEqual(releaseInfo, {
                 version: "1.1.0",
                 type: "minor",
                 changelog: {
@@ -108,8 +109,8 @@ describe("ReleaseOps", function() {
             });
         });
 
-        it("should create a major release when breaking changes are present", function() {
-            var logs = [
+        it("should create a major release when breaking changes are present", () => {
+            const logs = [
                     "* 34d6f550b2c87e61a70cb201abd3eadebb370453 Fix: Something (githubhandle)",
                     "* 5c5c361cc338d284cac6d170ab7e105e213e1307 Docs: Something else (Committer Name)",
                     "* bcdc618488d12184e32a7ba170b443450c3e9e48 Fix: Something else (Abc D. Efg)",
@@ -118,7 +119,7 @@ describe("ReleaseOps", function() {
                 ],
                 releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("1.0.0", logs);
 
-            assert.deepEqual(releaseInfo, {
+            assert.deepStrictEqual(releaseInfo, {
                 version: "2.0.0",
                 type: "major",
                 changelog: {
@@ -146,8 +147,8 @@ describe("ReleaseOps", function() {
             });
         });
 
-        it("should disregard reverted commits", function() {
-            var logs = [
+        it("should disregard reverted commits", () => {
+            const logs = [
                     "* 34d6f550b2c87e61a70cb201abd3eadebb370453 Docs: Update something in the docs (githubhandle)",
                     "This is the body.",
                     "It has multiple lines.",
@@ -166,7 +167,7 @@ describe("ReleaseOps", function() {
                 ],
                 releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("1.0.0", logs);
 
-            assert.deepEqual(releaseInfo, {
+            assert.deepStrictEqual(releaseInfo, {
                 version: "1.0.1",
                 type: "patch",
                 changelog: {
@@ -185,8 +186,8 @@ describe("ReleaseOps", function() {
             });
         });
 
-        it("should create a prerelease when passed a prereleaseId", function() {
-            var logs = [
+        it("should create a prerelease when passed a prereleaseId", () => {
+            const logs = [
                     "* fbe463916e0b49bc55f37363bf577ee20e0b3da6 Fix: Something (githubhandle)",
                     "* 7de216285f4d2e96508e6faefd9d8357baaaaec0 Docs: Something else (Committer Name)",
                     "* cd06fd502d106d10821227fd2d2ff77f7332c100 Fix: Something else (Abc D. Efg)",
@@ -195,7 +196,7 @@ describe("ReleaseOps", function() {
                 ],
                 releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("1.0.0", logs, "alpha");
 
-            assert.deepEqual(releaseInfo, {
+            assert.deepStrictEqual(releaseInfo, {
                 version: "2.0.0-alpha.0",
                 type: "major",
                 changelog: {
@@ -223,15 +224,15 @@ describe("ReleaseOps", function() {
             });
         });
 
-        it("should create a prerelease when passed a prereleaseId and prerelease version", function() {
-            var logs = [
+        it("should create a prerelease when passed a prereleaseId and prerelease version", () => {
+            const logs = [
                     "* eda81fc28943d51377851295c5c09682496fb9ac Fix: Something (githubhandle)",
                     "* 0c07d6ac037076557e34d569cd0290e529b3318a Docs: Something else (Committer Name)",
                     "* 196d32dbfb7cb37b886e7c4ba0adff499c6b26ac Fix: Something else (Abc D. Efg)"
                 ],
                 releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("2.0.0-alpha.0", logs, "alpha");
 
-            assert.deepEqual(releaseInfo, {
+            assert.deepStrictEqual(releaseInfo, {
                 version: "2.0.0-alpha.1",
                 type: "patch",
                 changelog: {
@@ -251,15 +252,15 @@ describe("ReleaseOps", function() {
             });
         });
 
-        it("should gracefully handle unformatted commit messages", function() {
-            var logs = [
+        it("should gracefully handle unformatted commit messages", () => {
+            const logs = [
                     "* 70222e95932d3a391ac5717252e13b478d686ba9 0.4.0-alpha.4 (Nicholas C. Zakas)",
                     "* d52a55e0572fbef1b702abfeefab9f53ff36d121 Build: package.json and changelog update for 0.4.0-alpha.4 (Nicholas C. Zakas)",
                     "* 1934e59323448afd864acc1db712ef8ef730af1a Fix: Changelog output (Nicholas C. Zakas)"
                 ],
                 releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("0.4.0-alpha.4", logs, "alpha");
 
-            assert.deepEqual(releaseInfo, {
+            assert.deepStrictEqual(releaseInfo, {
                 version: "0.4.0-alpha.5",
                 type: "patch",
                 changelog: {

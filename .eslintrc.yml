@@ -1,3 +1,5 @@
 env:
   node: true
 extends: "eslint-config-eslint"
+rules:
+  no-console: 0

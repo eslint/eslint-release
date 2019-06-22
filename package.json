@@ -4,7 +4,7 @@
   "description": "ESLint Release Tools",
   "main": "./lib/release-ops",
   "engines": {
-    "node": ">=0.12"
+    "node": ">=8.0.0"
   },
   "bin": {
     "eslint-generate-release": "./bin/eslint-generate-release.js",
@@ -38,18 +38,19 @@
   },
   "homepage": "https://github.com/eslint/eslint-release#readme",
   "devDependencies": {
-    "chai": "^3.4.1",
-    "eslint": "2.4.0",
-    "eslint-config-eslint": "^3.0.0",
-    "leche": "^2.1.1",
-    "mocha": "^2.3.4",
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-eslint": "^5.0.1",
+    "eslint-plugin-node": "^9.1.0",
+    "leche": "^2.3.0",
+    "mocha": "^6.1.4",
     "sinon": "^1.17.2"
   },
   "dependencies": {
-    "dateformat": "^1.0.12",
+    "dateformat": "^3.0.3",
     "github-api": "2.3.0",
     "linefix": "^0.1.1",
-    "semver": "^5.1.0",
-    "shelljs": "^0.5.3"
+    "semver": "^6.1.1",
+    "shelljs": "^0.8.3"
   }
 }
