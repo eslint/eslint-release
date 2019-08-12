@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "dateformat": "^3.0.3",
-    "github-api": "2.3.0",
+    "github-api": "^3.2.2",
     "linefix": "^0.1.1",
     "semver": "^6.1.1",
     "shelljs": "^0.8.3"
