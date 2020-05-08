@@ -46,6 +46,38 @@ describe("ReleaseOps", () => {
 
     });
 
+    describe("getChangelogCommitRange", () => {
+
+        it("returns an empty string when there are no prior releases", () => {
+            const tags = [];
+            const range = ReleaseOps.getChangelogCommitRange(tags);
+
+            assert.strictEqual(range, "");
+        });
+
+        it("finds the most recent tag for normal releases", () => {
+            const tags = ["1.0.0", "1.0.1"];
+            const range = ReleaseOps.getChangelogCommitRange(tags);
+
+            assert.strictEqual(range, "1.0.1..HEAD");
+        });
+
+        it("finds the most recent tag for prereleases", () => {
+            const tags = ["1.0.0", "1.0.1", "2.0.0-alpha.0", "2.0.0-alpha.1"];
+            const range = ReleaseOps.getChangelogCommitRange(tags, "beta");
+
+            assert.strictEqual(range, "2.0.0-alpha.1..HEAD");
+        });
+
+        it("finds the last stable tag for a new stable following prereleases", () => {
+            const tags = ["1.0.0", "1.0.1", "2.0.0-alpha.0", "2.0.0-rc.0"];
+            const range = ReleaseOps.getChangelogCommitRange(tags);
+
+            assert.strictEqual(range, "1.0.1..HEAD");
+        });
+
+    });
+
     describe("calculateReleaseFromGitLogs()", () => {
 
         it("should create a patch release when only bug fixes are present", () => {
@@ -246,6 +278,36 @@ describe("ReleaseOps", () => {
                 },
                 rawChangelog: [
                     "* [`eda81fc`](https://github.com/eslint/eslint-release/commit/eda81fc28943d51377851295c5c09682496fb9ac) Fix: Something (githubhandle)",
+                    "* [`0c07d6a`](https://github.com/eslint/eslint-release/commit/0c07d6ac037076557e34d569cd0290e529b3318a) Docs: Something else (Committer Name)",
+                    "* [`196d32d`](https://github.com/eslint/eslint-release/commit/196d32dbfb7cb37b886e7c4ba0adff499c6b26ac) Fix: Something else (Abc D. Efg)"
+                ].join("\n")
+            });
+        });
+
+        it("should create the next stable release following a prerelease", () => {
+            const logs = [
+                    "* 7e8a43b2b6350e13a61858f33b4099c964cdd758 Breaking: Remove API (githubhandle)",
+                    "* 0c07d6ac037076557e34d569cd0290e529b3318a Docs: Something else (Committer Name)",
+                    "* 196d32dbfb7cb37b886e7c4ba0adff499c6b26ac Fix: Something else (Abc D. Efg)"
+                ],
+                releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("2.0.0-rc.0", logs);
+
+            assert.deepStrictEqual(releaseInfo, {
+                version: "2.0.0",
+                type: "major",
+                changelog: {
+                    fix: [
+                        "* [`196d32d`](https://github.com/eslint/eslint-release/commit/196d32dbfb7cb37b886e7c4ba0adff499c6b26ac) Fix: Something else (Abc D. Efg)"
+                    ],
+                    docs: [
+                        "* [`0c07d6a`](https://github.com/eslint/eslint-release/commit/0c07d6ac037076557e34d569cd0290e529b3318a) Docs: Something else (Committer Name)"
+                    ],
+                    breaking: [
+                        "* [`7e8a43b`](https://github.com/eslint/eslint-release/commit/7e8a43b2b6350e13a61858f33b4099c964cdd758) Breaking: Remove API (githubhandle)"
+                    ]
+                },
+                rawChangelog: [
+                    "* [`7e8a43b`](https://github.com/eslint/eslint-release/commit/7e8a43b2b6350e13a61858f33b4099c964cdd758) Breaking: Remove API (githubhandle)",
                     "* [`0c07d6a`](https://github.com/eslint/eslint-release/commit/0c07d6ac037076557e34d569cd0290e529b3318a) Docs: Something else (Committer Name)",
                     "* [`196d32d`](https://github.com/eslint/eslint-release/commit/196d32dbfb7cb37b886e7c4ba0adff499c6b26ac) Fix: Something else (Abc D. Efg)"
                 ].join("\n")
