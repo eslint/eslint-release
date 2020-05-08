@@ -1,3 +1,9 @@
+v2.0.0 - May 8, 2020
+
+* [`d6439b3`](https://github.com/eslint/eslint-release/commit/d6439b3bf4f2b6582253315a0f3e1c50401343f0) Fix: use global-import shelljs (#38) (Kai Cataldo)
+* [`3d05dc5`](https://github.com/eslint/eslint-release/commit/3d05dc5a07238b4134172a512b3929369ea011f8) Update: Major version changelogs include all prereleases (#37) (Brandon Mills)
+* [`13d962b`](https://github.com/eslint/eslint-release/commit/13d962b18ecabdab58a278133ce4ad0b95a0dbc5) Upgrade: github-api@3.2.2 (#35) (薛定谔的猫)
+* [`8cde736`](https://github.com/eslint/eslint-release/commit/8cde736c5cdb4e9fe9cbc593e1d8f956633cfd8b) Breaking: require node >= 8.0 & upgrade eslint-config-eslint (#34) (薛定谔的猫)
 v1.2.0 - November 9, 2018
 
 * [`1f776d1`](https://github.com/eslint/eslint-release/commit/1f776d1b18bd8e0f03692fb2398b959d69171cd8) Update: avoid printing TOTP to output when publishing (#31) (Teddy Katz)
