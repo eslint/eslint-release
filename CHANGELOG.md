@@ -1,3 +1,7 @@
+v2.0.1 - July 14, 2020
+
+* [`d3884eb`](https://github.com/eslint/eslint-release/commit/d3884eb56d11db9d169a87f3ea2969a6dff3effa) Fix: blank line between changelog and last version (#39) (Tony Brix)
+
 v2.0.0 - May 8, 2020
 
 * [`d6439b3`](https://github.com/eslint/eslint-release/commit/d6439b3bf4f2b6582253315a0f3e1c50401343f0) Fix: use global-import shelljs (#38) (Kai Cataldo)
