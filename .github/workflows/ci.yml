@@ -7,7 +7,7 @@ on:
     branches:
       - master
 jobs:
-  ci:
+  test:
     name: Test
     strategy:
       matrix:
@@ -22,4 +22,4 @@ jobs:
     - name: Install Packages
       run: npm install
     - name: Test
-      run: node test
+      run: npm test
