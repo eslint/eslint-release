@@ -12,7 +12,7 @@
     "eslint-publish-release": "./bin/eslint-publish-release.js"
   },
   "scripts": {
-    "test": "npm run lint && mocha tests/lib/*.js",
+    "test": "mocha tests/lib/*.js",
     "lint": "eslint .",
     "generate-alpharelease": "node ./bin/eslint-generate-prerelease.js alpha",
     "generate-betarelease": "node ./bin/eslint-generate-prerelease.js beta",

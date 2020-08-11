@@ -7,7 +7,20 @@ on:
     branches:
       - master
 jobs:
-  ci:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Install dependencies
+        run: npm install
+      - name: Lint files
+        run: npm run lint
+  test:
     name: Test
     strategy:
       matrix:
@@ -19,7 +32,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node }}
-    - name: Install Packages
+    - name: Install dependencies
       run: npm install
-    - name: Test
-      run: node test
+    - name: Run tests
+      run: npm test
