@@ -1,3 +1,9 @@
+v3.0.0 - August 14, 2020
+
+* [`2a24936`](https://github.com/eslint/eslint-release/commit/2a249361d032b5151489f991fae42e5bfce2d6c2) Breaking: drop support for Node <10 (#41) (Kai Cataldo)
+* [`b13a435`](https://github.com/eslint/eslint-release/commit/b13a4354291702a96ab09c0e2b3d169a20b2c7a2) Chore: typo in GitHub Actions CI workflow (#40) (Kai Cataldo)
+* [`60eb528`](https://github.com/eslint/eslint-release/commit/60eb52884c9d5a4e51001110d216959cc3974e57) Chore: move to GitHub Actions (Kai Cataldo)
+
 v2.0.1 - July 14, 2020
 
 * [`d3884eb`](https://github.com/eslint/eslint-release/commit/d3884eb56d11db9d169a87f3ea2969a6dff3effa) Fix: blank line between changelog and last version (#39) (Tony Brix)
