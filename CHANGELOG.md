@@ -1,3 +1,7 @@
+v3.1.0 - August 24, 2020
+
+* [`7330f24`](https://github.com/eslint/eslint-release/commit/7330f24078ce8c370bfe06c75bfd5df764af5b60) Update: Remove specific branch from git push (fixes #42) (#43) (Nicholas C. Zakas)
+
 v3.0.0 - August 14, 2020
 
 * [`2a24936`](https://github.com/eslint/eslint-release/commit/2a249361d032b5151489f991fae42e5bfce2d6c2) Breaking: drop support for Node <10 (#41) (Kai Cataldo)
