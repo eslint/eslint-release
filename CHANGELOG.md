@@ -1,3 +1,10 @@
+v3.1.2 - September 1, 2020
+
+* [`f3a9411`](https://github.com/eslint/eslint-release/commit/f3a9411d70a89509f130f0d205c1ac4c37465262) Fix: Version number (Nicholas C. Zakas)
+* [`8fc924c`](https://github.com/eslint/eslint-release/commit/8fc924c4c82f1d6d154c82c9d4dc0e0108303686) 3.0.1 (ESLint Jenkins)
+* [`f609048`](https://github.com/eslint/eslint-release/commit/f6090485223bb96802a3c55d25b0074663e6580c) Build: changelog update for 3.0.1 (ESLint Jenkins)
+* [`348f5f7`](https://github.com/eslint/eslint-release/commit/348f5f78614dfc2077ea11d2ba4c44854e1960da) Fix: Use specific git command to push (#45) (Nicholas C. Zakas)
+
 v3.0.1 - September 1, 2020
 
 * [`348f5f7`](https://github.com/eslint/eslint-release/commit/348f5f78614dfc2077ea11d2ba4c44854e1960da) Fix: Use specific git command to push (#45) (Nicholas C. Zakas)
