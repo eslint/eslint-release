@@ -1,3 +1,7 @@
+v3.0.1 - September 1, 2020
+
+* [`348f5f7`](https://github.com/eslint/eslint-release/commit/348f5f78614dfc2077ea11d2ba4c44854e1960da) Fix: Use specific git command to push (#45) (Nicholas C. Zakas)
+
 v3.0.0 - August 14, 2020
 
 * [`2a24936`](https://github.com/eslint/eslint-release/commit/2a249361d032b5151489f991fae42e5bfce2d6c2) Breaking: drop support for Node <10 (#41) (Kai Cataldo)
