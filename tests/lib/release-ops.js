@@ -342,4 +342,32 @@ describe("ReleaseOps", () => {
         });
     });
 
+    describe("generateReleaseBody()", () => {
+        it("generates a changelog grouped by types", () => {
+            const changelog = {
+                    fix: [
+                        "* [`196d32d`](https://github.com/eslint/eslint-release/commit/196d32dbfb7cb37b886e7c4ba0adff499c6b26ac) Fix: Something else (Abc D. Efg)"
+                    ],
+                    docs: [
+                        "* [`0c07d6a`](https://github.com/eslint/eslint-release/commit/0c07d6ac037076557e34d569cd0290e529b3318a) Docs: Something else (Committer Name)"
+                    ],
+                    breaking: [
+                        "* [`7e8a43b`](https://github.com/eslint/eslint-release/commit/7e8a43b2b6350e13a61858f33b4099c964cdd758) Breaking: Remove API (githubhandle)"
+                    ]
+                },
+                generateReleaseBody = ReleaseOps.generateReleaseBody;
+
+            assert.strictEqual(generateReleaseBody(changelog), [
+                "## Breaking Changes",
+                "* [`7e8a43b`](https://github.com/eslint/eslint-release/commit/7e8a43b2b6350e13a61858f33b4099c964cdd758) Breaking: Remove API (githubhandle)",
+                "",
+                "## Bug Fixes",
+                "* [`196d32d`](https://github.com/eslint/eslint-release/commit/196d32dbfb7cb37b886e7c4ba0adff499c6b26ac) Fix: Something else (Abc D. Efg)",
+                "",
+                "## Documentation",
+                "* [`0c07d6a`](https://github.com/eslint/eslint-release/commit/0c07d6ac037076557e34d569cd0290e529b3318a) Docs: Something else (Committer Name)"
+            ].join("\n"));
+        });
+    });
+
 });
