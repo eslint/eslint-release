@@ -18,52 +18,43 @@ You can install the ESLint release tool using [npm](https://npmjs.com):
 $ npm install eslint-release --save-dev
 ```
 
-## Local Usage
+## Usage
 
-The ESLint release tool is designed to be used on the command line and has two modes: regular release and prerelease.
+To start, you'll need to define two environment variables:
 
-To run a regular release:
+* `NPM_TOKEN` - a token to use for `npm publish`. The token must be from a user that has permission to publish the package.
+* `ESLINT_GITHUB_TOKEN` - a token for a GitHub user that has `repo` permission (used for posting release notes).
+
+The ESLint release tool is designed to be used on the command line and is divided into two phases: package generation and package publishing.
+
+To generate a regular release:
 
 ```
-$ eslint-release
+$ eslint-generate-release
 ```
 
-To run a prerelease, you need to include the prerelease identifier:
+To generate a prerelease, you need to include the prerelease identifier:
 
 ```
-$ eslint-prerelease alpha
+$ eslint-generate-prerelease alpha
 ```
+
+Both `eslint-generate-release` and `eslint-generate-prerelease` generate a new version and update the changelog but will not push back to GitHub or publish to npm. It will  generate an npm package and a `.eslint-release-info.json` file.
+
+For both releases and prereleases, you can then publish the release:
+
+```
+$ eslint-publish-release
+```
+
+This command publishes the generate npm package and pushes the changes to GitHub. The `.eslint-release-info.json` file is required for this step to work correctly.
+
 
 You can optionally include the release tool in another Node.js script:
 
 ```js
 var ReleaseOps = require("eslint-release");
 ```
-
-## CI Usage
-
-When run in a CI environment like Jenkins, the ESLint release tool has different commands that allow for incorporation into more complex release scripts. To start, you'll need to define two environment variables:
-
-* `NPM_TOKEN` - a token to use for `npm publish`. The token must be from a user that has permission to publish the package.
-* `ESLINT_GITHUB_TOKEN` - a token for a GitHub user that has `repo` permission (used for posting release notes).
-
-To run a release in a CI environment:
-
-```
-$ eslint-ci-release
-```
-
-This will generate a new version, update the changelog, and publish to npm but will not push back to GitHub. It will also generate a `.releaseInfo.json` file.
-
-Your CI system must manually push the repository changes to GitHub (including the version tag). After that, you can publish release notes by running:
-
-```
-$ eslint-gh-release
-```
-
-This command looks for the `.releaseInfo.json` file and uses that information to determine where to post release notes and what to post.
-
-**Note:** In Jenkins, `eslint-gh-release` must be run as the last step in the build (typically in a post-build script that occurs after the GitHub repository has been updated).
 
 ## What It Does
 
@@ -82,15 +73,9 @@ When you run the release tool for a regular release, the following steps take pl
 
 When you do a prerelease, the same steps are taken except that package is published to npm under the `next` tag instead of `latest`.
 
-## Team
-
-These folks keep the project moving and are resources for help:
-
-* Nicholas C. Zakas ([@nzakas](https://github.com/nzakas)) - project lead
-
 ## Contributing
 
-Issues and pull requests will be triaged and responded to as quickly as possible. We operate under the [ESLint Contributor Guidelines](http://eslint.org/docs/developer-guide/contributing), so please be sure to read them before contributing. If you're not sure where to dig in, check out the [issues](https://github.com/eslint/eslint-release/issues).
+Issues and pull requests will be triaged and responded to as quickly as possible. We operate under the [ESLint Contributor Guidelines](https://eslint.org/docs/developer-guide/contributing), so please be sure to read them before contributing. If you're not sure where to dig in, check out the [issues](https://github.com/eslint/eslint-release/issues).
 
 ### License
 
@@ -98,7 +83,7 @@ MIT License
 
 ### Where to ask for help?
 
-Join our [Chatroom](https://gitter.im/eslint/eslint)
+Join our [Chatroom](https://eslint.org/chat/help)
 
 [npm-image]: https://img.shields.io/npm/v/eslint-release.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/eslint-release
