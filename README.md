@@ -39,7 +39,7 @@ To generate a prerelease, you need to include the prerelease identifier:
 $ eslint-generate-prerelease alpha
 ```
 
-Both `eslint-generate-release` and `eslint-generate-prerelease` generate a new version and update the changelog but will not push back to GitHub or publish to npm. It will  generate an npm package and a `.eslint-release-info.json` file.
+Both `eslint-generate-release` and `eslint-generate-prerelease` generate a new version and update the changelog but will not push back to GitHub or publish to npm. It will generate an npm package and a `.eslint-release-info.json` file.
 
 For both releases and prereleases, you can then publish the release:
 
