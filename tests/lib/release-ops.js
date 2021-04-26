@@ -176,6 +176,7 @@ describe("ReleaseOps", () => {
                 ].join("\n")
             });
         });
+        
         it("should create a major release when breaking changes are present", () => {
             const logs = [
                     "* 34d6f550b2c87e61a70cb201abd3eadebb370453 Fix: Something (githubhandle)",
