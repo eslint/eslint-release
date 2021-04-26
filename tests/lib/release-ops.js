@@ -82,8 +82,9 @@ describe("ReleaseOps", () => {
 
         it("should create a patch release when only bug fixes are present", () => {
             const logs = [
-                    "* 5b4812a956935358bf6e48f4d75a9bc998b3fe41 Fix: Something (Foo Bar)",
-                    "* 00a3526f3a6560e4f91d390725b9a70f5d974f89 Docs: Something else (foobar)",
+                    "* 5b4812a956935358bf6e48f4d75a9bc998b3fe41 fix: Something (Foo Bar)",
+                    "* 00b3526f3a6560e4f91d390725b9a70f5d974f80 docs: Something else (foobar)",
+                    "* 00a3526f3a6560e4f91d390725b9a70f5d974f80 Docs: Something else (foobar)",
                     "* 24b2fdb310b89d7aad134df7e8863a5e055ac63f Fix: Something else (Foo B. Baz)"
                 ],
                 releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("1.0.0", logs);
@@ -93,16 +94,18 @@ describe("ReleaseOps", () => {
                 type: "patch",
                 changelog: {
                     fix: [
-                        "* [`5b4812a`](https://github.com/eslint/eslint-release/commit/5b4812a956935358bf6e48f4d75a9bc998b3fe41) Fix: Something (Foo Bar)",
+                        "* [`5b4812a`](https://github.com/eslint/eslint-release/commit/5b4812a956935358bf6e48f4d75a9bc998b3fe41) fix: Something (Foo Bar)",
                         "* [`24b2fdb`](https://github.com/eslint/eslint-release/commit/24b2fdb310b89d7aad134df7e8863a5e055ac63f) Fix: Something else (Foo B. Baz)"
                     ],
                     docs: [
-                        "* [`00a3526`](https://github.com/eslint/eslint-release/commit/00a3526f3a6560e4f91d390725b9a70f5d974f89) Docs: Something else (foobar)"
+                        "* [`00b3526`](https://github.com/eslint/eslint-release/commit/00b3526f3a6560e4f91d390725b9a70f5d974f80) docs: Something else (foobar)",
+                        "* [`00a3526`](https://github.com/eslint/eslint-release/commit/00a3526f3a6560e4f91d390725b9a70f5d974f80) Docs: Something else (foobar)"
                     ]
                 },
                 rawChangelog: [
-                    "* [`5b4812a`](https://github.com/eslint/eslint-release/commit/5b4812a956935358bf6e48f4d75a9bc998b3fe41) Fix: Something (Foo Bar)",
-                    "* [`00a3526`](https://github.com/eslint/eslint-release/commit/00a3526f3a6560e4f91d390725b9a70f5d974f89) Docs: Something else (foobar)",
+                    "* [`5b4812a`](https://github.com/eslint/eslint-release/commit/5b4812a956935358bf6e48f4d75a9bc998b3fe41) fix: Something (Foo Bar)",
+                    "* [`00b3526`](https://github.com/eslint/eslint-release/commit/00b3526f3a6560e4f91d390725b9a70f5d974f80) docs: Something else (foobar)",
+                    "* [`00a3526`](https://github.com/eslint/eslint-release/commit/00a3526f3a6560e4f91d390725b9a70f5d974f80) Docs: Something else (foobar)",
                     "* [`24b2fdb`](https://github.com/eslint/eslint-release/commit/24b2fdb310b89d7aad134df7e8863a5e055ac63f) Fix: Something else (Foo B. Baz)"
                 ].join("\n")
             });
@@ -141,6 +144,38 @@ describe("ReleaseOps", () => {
             });
         });
 
+        it("should create a minor release when conventional enhancements are present", () => {
+            const logs = [
+                "* 34d6f550b2c87e61a70cb201abd3eadebb370453 fix: Something (Author Name)",
+                "* 5c5c361cc338d284cac6d170ab7e105e213e1307 docs: Something else (authorname)",
+                "* bcdc618488d12184e32a7ba170b443450c3e9e48 fix: Something else (First Last)",
+                "* 7e4ffad5c91e4f8a99a95955ec65c5dbe9ae1758 feat: Foo (dotstar)"
+            ],
+                releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("1.0.0", logs);
+
+            assert.deepStrictEqual(releaseInfo, {
+                version: "1.1.0",
+                type: "minor",
+                changelog: {
+                    fix: [
+                        "* [`34d6f55`](https://github.com/eslint/eslint-release/commit/34d6f550b2c87e61a70cb201abd3eadebb370453) fix: Something (Author Name)",
+                        "* [`bcdc618`](https://github.com/eslint/eslint-release/commit/bcdc618488d12184e32a7ba170b443450c3e9e48) fix: Something else (First Last)"
+                    ],
+                    docs: [
+                        "* [`5c5c361`](https://github.com/eslint/eslint-release/commit/5c5c361cc338d284cac6d170ab7e105e213e1307) docs: Something else (authorname)"
+                    ],
+                    new: [
+                        "* [`7e4ffad`](https://github.com/eslint/eslint-release/commit/7e4ffad5c91e4f8a99a95955ec65c5dbe9ae1758) feat: Foo (dotstar)"
+                    ]
+                },
+                rawChangelog: [
+                    "* [`34d6f55`](https://github.com/eslint/eslint-release/commit/34d6f550b2c87e61a70cb201abd3eadebb370453) fix: Something (Author Name)",
+                    "* [`5c5c361`](https://github.com/eslint/eslint-release/commit/5c5c361cc338d284cac6d170ab7e105e213e1307) docs: Something else (authorname)",
+                    "* [`bcdc618`](https://github.com/eslint/eslint-release/commit/bcdc618488d12184e32a7ba170b443450c3e9e48) fix: Something else (First Last)",
+                    "* [`7e4ffad`](https://github.com/eslint/eslint-release/commit/7e4ffad5c91e4f8a99a95955ec65c5dbe9ae1758) feat: Foo (dotstar)"
+                ].join("\n")
+            });
+        });
         it("should create a major release when breaking changes are present", () => {
             const logs = [
                     "* 34d6f550b2c87e61a70cb201abd3eadebb370453 Fix: Something (githubhandle)",
@@ -175,6 +210,44 @@ describe("ReleaseOps", () => {
                     "* [`bcdc618`](https://github.com/eslint/eslint-release/commit/bcdc618488d12184e32a7ba170b443450c3e9e48) Fix: Something else (Abc D. Efg)",
                     "* [`7e4ffad`](https://github.com/eslint/eslint-release/commit/7e4ffad5c91e4f8a99a95955ec65c5dbe9ae1758) Update: Foo (Tina Tester)",
                     "* [`00a3526`](https://github.com/eslint/eslint-release/commit/00a3526f3a6560e4f91d390725b9a70f5d974f89) Breaking: Whatever (Toby Testing)"
+                ].join("\n")
+            });
+        });
+
+        it("should create a major release when conventional breaking changes are present", () => {
+            const logs = [
+                "* 34d6f550b2c87e61a70cb201abd3eadebb370453 fix: Something (githubhandle)",
+                "* 5c5c361cc338d284cac6d170ab7e105e213e1307 docs: Something else (Committer Name)",
+                "* bcdc618488d12184e32a7ba170b443450c3e9e48 fix: Something else (Abc D. Efg)",
+                "* 7e4ffad5c91e4f8a99a95955ec65c5dbe9ae1758 feat: Foo (Tina Tester)",
+                "* 00a3526f3a6560e4f91d390725b9a70f5d974f89 feat!: Whatever (Toby Testing)"
+            ],
+                releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("1.0.0", logs);
+
+            assert.deepStrictEqual(releaseInfo, {
+                version: "2.0.0",
+                type: "major",
+                changelog: {
+                    fix: [
+                        "* [`34d6f55`](https://github.com/eslint/eslint-release/commit/34d6f550b2c87e61a70cb201abd3eadebb370453) fix: Something (githubhandle)",
+                        "* [`bcdc618`](https://github.com/eslint/eslint-release/commit/bcdc618488d12184e32a7ba170b443450c3e9e48) fix: Something else (Abc D. Efg)"
+                    ],
+                    docs: [
+                        "* [`5c5c361`](https://github.com/eslint/eslint-release/commit/5c5c361cc338d284cac6d170ab7e105e213e1307) docs: Something else (Committer Name)"
+                    ],
+                    new: [
+                        "* [`7e4ffad`](https://github.com/eslint/eslint-release/commit/7e4ffad5c91e4f8a99a95955ec65c5dbe9ae1758) feat: Foo (Tina Tester)"
+                    ],
+                    breaking: [
+                        "* [`00a3526`](https://github.com/eslint/eslint-release/commit/00a3526f3a6560e4f91d390725b9a70f5d974f89) feat!: Whatever (Toby Testing)"
+                    ]
+                },
+                rawChangelog: [
+                    "* [`34d6f55`](https://github.com/eslint/eslint-release/commit/34d6f550b2c87e61a70cb201abd3eadebb370453) fix: Something (githubhandle)",
+                    "* [`5c5c361`](https://github.com/eslint/eslint-release/commit/5c5c361cc338d284cac6d170ab7e105e213e1307) docs: Something else (Committer Name)",
+                    "* [`bcdc618`](https://github.com/eslint/eslint-release/commit/bcdc618488d12184e32a7ba170b443450c3e9e48) fix: Something else (Abc D. Efg)",
+                    "* [`7e4ffad`](https://github.com/eslint/eslint-release/commit/7e4ffad5c91e4f8a99a95955ec65c5dbe9ae1758) feat: Foo (Tina Tester)",
+                    "* [`00a3526`](https://github.com/eslint/eslint-release/commit/00a3526f3a6560e4f91d390725b9a70f5d974f89) feat!: Whatever (Toby Testing)"
                 ].join("\n")
             });
         });
