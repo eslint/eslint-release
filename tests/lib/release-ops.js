@@ -179,7 +179,7 @@ describe("ReleaseOps", () => {
             });
         });
 
-        it("should disregard reverted commits", () => {
+        it("should disregard reverted commits and sponsor syncs", () => {
             const logs = [
                     "* 34d6f550b2c87e61a70cb201abd3eadebb370453 Docs: Update something in the docs (githubhandle)",
                     "This is the body.",
@@ -187,6 +187,8 @@ describe("ReleaseOps", () => {
                     "* 5c5c361cc338d284cac6d170ab7e105e213e1307 Revert \"Breaking: A breaking change (fixes #1234)\" (Committer Name)",
                     "This reverts commit 00a3526f3a6560e4f91d390725b9a70f5d974f89.",
                     "This explains why.",
+                    "* bcdc618488d12184e32a7ba170b443450c3e9e4a Sponsors: Sync README with website (Abc D. Efg)",
+                    "Describe the bug.",
                     "* bcdc618488d12184e32a7ba170b443450c3e9e48 Fix: Fix a bug (fixes #4321) (Abc D. Efg)",
                     "Describe the bug.",
                     "* 7e4ffad5c91e4f8a99a95955ec65c5dbe9ae1758 Revert \"New: Add cool new feature (fixes #42)\" (Tina Tester)",
