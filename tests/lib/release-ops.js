@@ -146,11 +146,11 @@ describe("ReleaseOps", () => {
 
         it("should create a minor release when conventional enhancements are present", () => {
             const logs = [
-                "* 34d6f550b2c87e61a70cb201abd3eadebb370453 fix: Something (Author Name)",
-                "* 5c5c361cc338d284cac6d170ab7e105e213e1307 docs: Something else (authorname)",
-                "* bcdc618488d12184e32a7ba170b443450c3e9e48 fix: Something else (First Last)",
-                "* 7e4ffad5c91e4f8a99a95955ec65c5dbe9ae1758 feat: Foo (dotstar)"
-            ],
+                    "* 34d6f550b2c87e61a70cb201abd3eadebb370453 fix: Something (Author Name)",
+                    "* 5c5c361cc338d284cac6d170ab7e105e213e1307 docs: Something else (authorname)",
+                    "* bcdc618488d12184e32a7ba170b443450c3e9e48 fix: Something else (First Last)",
+                    "* 7e4ffad5c91e4f8a99a95955ec65c5dbe9ae1758 feat: Foo (dotstar)"
+                ],
                 releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("1.0.0", logs);
 
             assert.deepStrictEqual(releaseInfo, {
@@ -176,7 +176,7 @@ describe("ReleaseOps", () => {
                 ].join("\n")
             });
         });
-        
+
         it("should create a major release when breaking changes are present", () => {
             const logs = [
                     "* 34d6f550b2c87e61a70cb201abd3eadebb370453 Fix: Something (githubhandle)",
@@ -217,12 +217,12 @@ describe("ReleaseOps", () => {
 
         it("should create a major release when conventional breaking changes are present", () => {
             const logs = [
-                "* 34d6f550b2c87e61a70cb201abd3eadebb370453 fix: Something (githubhandle)",
-                "* 5c5c361cc338d284cac6d170ab7e105e213e1307 docs: Something else (Committer Name)",
-                "* bcdc618488d12184e32a7ba170b443450c3e9e48 fix: Something else (Abc D. Efg)",
-                "* 7e4ffad5c91e4f8a99a95955ec65c5dbe9ae1758 feat: Foo (Tina Tester)",
-                "* 00a3526f3a6560e4f91d390725b9a70f5d974f89 feat!: Whatever (Toby Testing)"
-            ],
+                    "* 34d6f550b2c87e61a70cb201abd3eadebb370453 fix: Something (githubhandle)",
+                    "* 5c5c361cc338d284cac6d170ab7e105e213e1307 docs: Something else (Committer Name)",
+                    "* bcdc618488d12184e32a7ba170b443450c3e9e48 fix: Something else (Abc D. Efg)",
+                    "* 7e4ffad5c91e4f8a99a95955ec65c5dbe9ae1758 feat: Foo (Tina Tester)",
+                    "* 00a3526f3a6560e4f91d390725b9a70f5d974f89 feat!: Whatever (Toby Testing)"
+                ],
                 releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("1.0.0", logs);
 
             assert.deepStrictEqual(releaseInfo, {
