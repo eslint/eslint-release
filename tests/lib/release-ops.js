@@ -84,8 +84,17 @@ describe("ReleaseOps", () => {
             const logs = [
                     "* 5b4812a956935358bf6e48f4d75a9bc998b3fe41 fix: Something (Foo Bar)",
                     "* 00b3526f3a6560e4f91d390725b9a70f5d974f80 docs: Something else (foobar)",
+                    "* 0fdda4da083887abfb7b11a3b1ed8e82c4d3d99e build: Something about b. process (baz)",
+                    "* 397557b9ac860b36d3031f95c567ab8c0b12f008 chore: Something not user-facing (qux)",
+                    "* a968dff397c9ea20245a11b37d93ac89a4575a03 refactor: Something better (bazqux)",
+                    "* c1391a40b633315ee7b79cffad7043491f9e44f9 test: Something to cover (Baz Qux)",
+                    "* c70860f01f854d6d11dd60e527d27f841d195bca ci: Something continuous (BQ)",
+                    "* 3826b57a974ec1c175915fe0b9d9dd8da7e101ac perf: Something faster (quux)",
                     "* 00a3526f3a6560e4f91d390725b9a70f5d974f80 Docs: Something else (foobar)",
-                    "* 24b2fdb310b89d7aad134df7e8863a5e055ac63f Fix: Something else (Foo B. Baz)"
+                    "* 24b2fdb310b89d7aad134df7e8863a5e055ac63f Fix: Something else (Foo B. Baz)",
+                    "* 2a249361d032b5151489f991fae42e5bfce2d6c2 Build: Something about pkg (Baz B. Foo)",
+                    "* 60eb52884c9d5a4e51001110d216959cc3974e57 Upgrade: Something about dependencies (quuux)",
+                    "* 3d05dc5a07238b4134172a512b3929369ea011f8 Chore: Something different (Bar B. Qux)"
                 ],
                 releaseInfo = ReleaseOps.calculateReleaseFromGitLogs("1.0.0", logs);
 
@@ -100,13 +109,37 @@ describe("ReleaseOps", () => {
                     docs: [
                         "* [`00b3526`](https://github.com/eslint/eslint-release/commit/00b3526f3a6560e4f91d390725b9a70f5d974f80) docs: Something else (foobar)",
                         "* [`00a3526`](https://github.com/eslint/eslint-release/commit/00a3526f3a6560e4f91d390725b9a70f5d974f80) Docs: Something else (foobar)"
+                    ],
+                    build: [
+                        "* [`0fdda4d`](https://github.com/eslint/eslint-release/commit/0fdda4da083887abfb7b11a3b1ed8e82c4d3d99e) build: Something about b. process (baz)",
+                        "* [`2a24936`](https://github.com/eslint/eslint-release/commit/2a249361d032b5151489f991fae42e5bfce2d6c2) Build: Something about pkg (Baz B. Foo)"
+                    ],
+                    chore: [
+                        "* [`397557b`](https://github.com/eslint/eslint-release/commit/397557b9ac860b36d3031f95c567ab8c0b12f008) chore: Something not user-facing (qux)",
+                        "* [`a968dff`](https://github.com/eslint/eslint-release/commit/a968dff397c9ea20245a11b37d93ac89a4575a03) refactor: Something better (bazqux)",
+                        "* [`c1391a4`](https://github.com/eslint/eslint-release/commit/c1391a40b633315ee7b79cffad7043491f9e44f9) test: Something to cover (Baz Qux)",
+                        "* [`c70860f`](https://github.com/eslint/eslint-release/commit/c70860f01f854d6d11dd60e527d27f841d195bca) ci: Something continuous (BQ)",
+                        "* [`3826b57`](https://github.com/eslint/eslint-release/commit/3826b57a974ec1c175915fe0b9d9dd8da7e101ac) perf: Something faster (quux)",
+                        "* [`3d05dc5`](https://github.com/eslint/eslint-release/commit/3d05dc5a07238b4134172a512b3929369ea011f8) Chore: Something different (Bar B. Qux)"
+                    ],
+                    upgrade: [
+                        "* [`60eb528`](https://github.com/eslint/eslint-release/commit/60eb52884c9d5a4e51001110d216959cc3974e57) Upgrade: Something about dependencies (quuux)"
                     ]
                 },
                 rawChangelog: [
                     "* [`5b4812a`](https://github.com/eslint/eslint-release/commit/5b4812a956935358bf6e48f4d75a9bc998b3fe41) fix: Something (Foo Bar)",
                     "* [`00b3526`](https://github.com/eslint/eslint-release/commit/00b3526f3a6560e4f91d390725b9a70f5d974f80) docs: Something else (foobar)",
+                    "* [`0fdda4d`](https://github.com/eslint/eslint-release/commit/0fdda4da083887abfb7b11a3b1ed8e82c4d3d99e) build: Something about b. process (baz)",
+                    "* [`397557b`](https://github.com/eslint/eslint-release/commit/397557b9ac860b36d3031f95c567ab8c0b12f008) chore: Something not user-facing (qux)",
+                    "* [`a968dff`](https://github.com/eslint/eslint-release/commit/a968dff397c9ea20245a11b37d93ac89a4575a03) refactor: Something better (bazqux)",
+                    "* [`c1391a4`](https://github.com/eslint/eslint-release/commit/c1391a40b633315ee7b79cffad7043491f9e44f9) test: Something to cover (Baz Qux)",
+                    "* [`c70860f`](https://github.com/eslint/eslint-release/commit/c70860f01f854d6d11dd60e527d27f841d195bca) ci: Something continuous (BQ)",
+                    "* [`3826b57`](https://github.com/eslint/eslint-release/commit/3826b57a974ec1c175915fe0b9d9dd8da7e101ac) perf: Something faster (quux)",
                     "* [`00a3526`](https://github.com/eslint/eslint-release/commit/00a3526f3a6560e4f91d390725b9a70f5d974f80) Docs: Something else (foobar)",
-                    "* [`24b2fdb`](https://github.com/eslint/eslint-release/commit/24b2fdb310b89d7aad134df7e8863a5e055ac63f) Fix: Something else (Foo B. Baz)"
+                    "* [`24b2fdb`](https://github.com/eslint/eslint-release/commit/24b2fdb310b89d7aad134df7e8863a5e055ac63f) Fix: Something else (Foo B. Baz)",
+                    "* [`2a24936`](https://github.com/eslint/eslint-release/commit/2a249361d032b5151489f991fae42e5bfce2d6c2) Build: Something about pkg (Baz B. Foo)",
+                    "* [`60eb528`](https://github.com/eslint/eslint-release/commit/60eb52884c9d5a4e51001110d216959cc3974e57) Upgrade: Something about dependencies (quuux)",
+                    "* [`3d05dc5`](https://github.com/eslint/eslint-release/commit/3d05dc5a07238b4134172a512b3929369ea011f8) Chore: Something different (Bar B. Qux)"
                 ].join("\n")
             });
         });
