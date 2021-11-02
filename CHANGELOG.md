@@ -1,3 +1,14 @@
+v3.2.0 - November 2, 2021
+
+* [`182e1f3`](https://github.com/eslint/eslint-release/commit/182e1f3bf847c3596ad06ad6dace30b720b96670) fix: add missing tags `test` and `upgrade` (#57) (Milos Djermanovic)
+* [`0fdda4d`](https://github.com/eslint/eslint-release/commit/0fdda4da083887abfb7b11a3b1ed8e82c4d3d99e) Update: Support conventional commits (#55) (Nicholas C. Zakas)
+* [`397557b`](https://github.com/eslint/eslint-release/commit/397557b9ac860b36d3031f95c567ab8c0b12f008) Fix: Omit sponsors sync from changelog (#53) (Nicholas C. Zakas)
+* [`a968dff`](https://github.com/eslint/eslint-release/commit/a968dff397c9ea20245a11b37d93ac89a4575a03) Chore: upgrade eslint-config-eslint@7.0.0 (#54) (Milos Djermanovic)
+* [`4ea4f6b`](https://github.com/eslint/eslint-release/commit/4ea4f6bcc57006d952aa3f89d50c7fe36e1f9328) Build: Update CI to point to main branch (#52) (Nicholas C. Zakas)
+* [`c1391a4`](https://github.com/eslint/eslint-release/commit/c1391a40b633315ee7b79cffad7043491f9e44f9) Docs: Update README to reflect reality (fixes #36) (#49) (Nicholas C. Zakas)
+* [`86af6a8`](https://github.com/eslint/eslint-release/commit/86af6a868fd71af1ff5bdb4f76ab00949f3b0a45) Fix: env var names are case-insensitive in windows (#48) (翠 / green)
+* [`c70860f`](https://github.com/eslint/eslint-release/commit/c70860f01f854d6d11dd60e527d27f841d195bca) Update: group commits by types in release log (fixes #46) (#47) (翠 / green)
+
 v3.1.2 - September 1, 2020
 
 * [`f3a9411`](https://github.com/eslint/eslint-release/commit/f3a9411d70a89509f130f0d205c1ac4c37465262) Fix: Version number (Nicholas C. Zakas)
