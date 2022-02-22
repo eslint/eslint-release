@@ -1,6 +1,6 @@
 [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][downloads-url]
-[![Join the chat at https://gitter.im/eslint/eslint](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/eslint/eslint?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status][build-image]][build-url]
 
 # ESLint Release Tool
 
@@ -89,3 +89,5 @@ Join our [Chatroom](https://eslint.org/chat/help)
 [npm-url]: https://www.npmjs.com/package/eslint-release
 [downloads-image]: https://img.shields.io/npm/dm/eslint-release.svg?style=flat-square
 [downloads-url]: https://www.npmjs.com/package/eslint-release
+[build-image]: https://github.com/eslint/eslint-release/workflows/CI/badge.svg
+[build-url]: https://github.com/eslint/eslint-release/actions
