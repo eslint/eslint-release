@@ -12,12 +12,13 @@
     "eslint-publish-release": "./bin/eslint-publish-release.js"
   },
   "scripts": {
-    "test": "mocha tests/lib/*.js",
     "lint": "eslint .",
-    "generate-alpharelease": "node ./bin/eslint-generate-prerelease.js alpha",
-    "generate-betarelease": "node ./bin/eslint-generate-prerelease.js beta",
-    "generate-release": "node ./bin/eslint-generate-release.js",
-    "publish-release": "node ./bin/eslint-publish-release.js"
+    "release:generate:latest": "eslint-generate-release",
+    "release:generate:alpha": "eslint-generate-prerelease alpha",
+    "release:generate:beta": "eslint-generate-prerelease beta",
+    "release:generate:rc": "eslint-generate-prerelease rc",
+    "release:publish": "eslint-publish-release",
+    "test": "mocha tests/lib/*.js"
   },
   "files": [
     "bin",
