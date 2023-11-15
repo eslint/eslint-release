@@ -1,3 +1,9 @@
+v3.2.1 - November 15, 2023
+
+* [`a453432`](https://github.com/eslint/eslint-release/commit/a4534320eb81cb49487c9df07acd41cecc19abbb) chore: standardize npm script names (#60) (Nitin Kumar)
+* [`e4cc0d1`](https://github.com/eslint/eslint-release/commit/e4cc0d1901abd6d24f01ddca6aac9c4050886ee7) chore: add triage action (#59) (Milos Djermanovic)
+* [`198c7e7`](https://github.com/eslint/eslint-release/commit/198c7e700e501f2762f41396635b74fdb7d04e06) docs: update badges (#58) (Milos Djermanovic)
+
 v3.2.0 - November 2, 2021
 
 * [`182e1f3`](https://github.com/eslint/eslint-release/commit/182e1f3bf847c3596ad06ad6dace30b720b96670) fix: add missing tags `test` and `upgrade` (#57) (Milos Djermanovic)
