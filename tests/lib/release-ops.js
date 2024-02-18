@@ -487,11 +487,11 @@ describe("ReleaseOps", () => {
 
         const cwd = process.cwd();
         let sandbox = null;
+        let tmpDir = null;
 
         beforeEach(() => {
             sandbox = sinon.sandbox.create();
-            const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "writeChangelog-"));
-
+            tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "writeChangelog-"));
             process.chdir(tmpDir);
         });
 
@@ -499,6 +499,9 @@ describe("ReleaseOps", () => {
             sandbox.restore();
             sandbox = null;
             process.chdir(cwd);
+            fs.readdirSync(tmpDir).forEach(filename => fs.unlinkSync(path.join(tmpDir, filename))); // delete files in tmpDir
+            fs.rmdirSync(tmpDir);
+            tmpDir = null;
         });
 
         it("creates a changelog", () => {
