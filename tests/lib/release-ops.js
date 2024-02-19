@@ -12,7 +12,11 @@
 //------------------------------------------------------------------------------
 
 const assert = require("chai").assert,
+    fs = require("fs"),
     leche = require("leche"),
+    os = require("os"),
+    path = require("path"),
+    sinon = require("sinon"),
     ReleaseOps = require("../../lib/release-ops");
 
 //------------------------------------------------------------------------------
@@ -476,6 +480,67 @@ describe("ReleaseOps", () => {
                 "## Documentation",
                 "* [`0c07d6a`](https://github.com/eslint/eslint-release/commit/0c07d6ac037076557e34d569cd0290e529b3318a) Docs: Something else (Committer Name)"
             ].join("\n"));
+        });
+    });
+
+    describe("writeChangelog", () => {
+
+        const cwd = process.cwd();
+        let sandbox = null;
+        let tmpDir = null;
+
+        beforeEach(() => {
+            sandbox = sinon.sandbox.create();
+            tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "writeChangelog-"));
+            process.chdir(tmpDir);
+        });
+
+        afterEach(() => {
+            sandbox.restore();
+            sandbox = null;
+            process.chdir(cwd);
+            fs.readdirSync(tmpDir).forEach(filename => fs.unlinkSync(path.join(tmpDir, filename))); // delete files in tmpDir
+            fs.rmdirSync(tmpDir);
+            tmpDir = null;
+        });
+
+        it("creates a changelog", () => {
+            const rawChangelog =
+            "* [`bfb7759`](https://github.com/eslint/eeslint-release/commit/bfb7759a67daeb65410490b4d98bb9da7d1ea2ce) feat: First alpha (Firstname Lastname)";
+            const releaseInfo = { version: "1.0.0-alpha.0", rawChangelog };
+            const date = new Date(2024, 1, 15);
+
+            sandbox.stub(global, "Date").returns(date);
+
+            ReleaseOps.writeChangelog(releaseInfo);
+
+            assert.deepStrictEqual(fs.readdirSync("."), ["CHANGELOG.md"]);
+            const newChangelog = fs.readFileSync("CHANGELOG.md", "utf-8");
+
+            assert.strictEqual(newChangelog, `v1.0.0-alpha.0 - February 15, 2024\n\n${rawChangelog}\n\n`);
+        });
+
+        it("extends a changelog", () => {
+            const oldChangelog =
+            "v9.0.0 - December 31, 2023\n" +
+            "\n" +
+            "* [`0beec7b`](https://github.com/eslint/eeslint-release/commit/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33) chore: Remove a dependency (𐌕𐌄𐌔𐌕)\n" +
+            "\n";
+            const rawChangelog =
+            "* [`62cdb70`](https://github.com/eslint/eeslint-release/commit/62cdb7020ff920e5aa642c3d4066950dd1f01f4d) fix: Fix something (Abc D. Efg)\n" +
+            "* [`bbe960a`](https://github.com/eslint/eeslint-release/commit/bbe960a25ea311d21d40669e93df2003ba9b90a2) test: Make sure it's broken (Francesco Trotta)";
+            const releaseInfo = { version: "10.0.0", rawChangelog };
+            const date = new Date(2024, 1, 2);
+
+            sandbox.stub(global, "Date").returns(date);
+            fs.writeFileSync("CHANGELOG.md", oldChangelog);
+
+            ReleaseOps.writeChangelog(releaseInfo);
+
+            assert.deepStrictEqual(fs.readdirSync("."), ["CHANGELOG.md"]);
+            const newChangelog = fs.readFileSync("CHANGELOG.md", "utf-8");
+
+            assert.strictEqual(newChangelog, `v10.0.0 - February 2, 2024\n\n${rawChangelog}\n\n${oldChangelog}`);
         });
     });
 
