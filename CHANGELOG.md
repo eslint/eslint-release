@@ -1,3 +1,7 @@
+v3.2.2 - February 21, 2024
+
+* [`e419afd`](https://github.com/eslint/eslint-release/commit/e419afdcb6465fe44ed23cbd93861a3757fbb56d) chore: remove dependency shelljs (#61) (Francesco Trotta)
+
 v3.2.1 - November 15, 2023
 
 * [`a453432`](https://github.com/eslint/eslint-release/commit/a4534320eb81cb49487c9df07acd41cecc19abbb) chore: standardize npm script names (#60) (Nitin Kumar)
