@@ -66,12 +66,51 @@ When you run the release tool for a regular release, the following steps take pl
 1. Calculates the next release version based on the [commit message format](http://eslint.org/docs/developer-guide/contributing/pull-requests#step-2-make-your-changes) of the changes since the last release
 1. Updates `CHANGELOG.md` and commits the changes
 1. Runs `npm version` to update the version
-1. Pushes the repository to origin/master with tags (only outside of CI release)
+1. Pushes the current branch to origin, with tags
+1. Creates GitHub release marked as Latest
 1. Converts all line endings to Unix style
 1. Publishes the package to npm
 1. Reverts any file changes
 
-When you do a prerelease, the same steps are taken except that package is published to npm under the `next` tag instead of `latest`.
+When you do a prerelease, the same steps are taken except that package is published to npm under the `next` tag instead of `latest`, and the GitHub release is marked as Pre-release.
+
+## API Usage
+
+This package exports two functions:
+
+* `generateRelease(prereleaseId, packageTag)` - This corresponds to the CLI command `eslint-generate-release` when `prereleaseId` is `undefined`, and the CLI command `eslint-generate-prerelease prereleaseId` when `prereleaseId` is a string value.
+* `publishRelease()` - This corresponds to the CLI command `eslint-publish-release`.
+
+`packageTag` is used as the `--tag` value in the `npm publish` command. It's also used to determine whether a regular release will be marked as Latest on GitHub: it will be marked as Latest only if `packageTag` is `"latest"`. This parameter is optional and defaults to `"latest"` when `prereleaseId` is `undefined`, `"next"` otherwise.
+
+### Examples
+
+Publish a regular latest release:
+
+```js
+const ReleaseOps = require("eslint-release");
+
+ReleaseOps.generateRelease();
+ReleaseOps.publishRelease();
+```
+
+Publish a regular release with `maintenance` tag:
+
+```js
+const ReleaseOps = require("eslint-release");
+
+ReleaseOps.generateRelease(undefined, "maintenance");
+ReleaseOps.publishRelease();
+```
+
+Publish an `alpha` prerelease:
+
+```js
+const ReleaseOps = require("eslint-release");
+
+ReleaseOps.generateRelease("alpha");
+ReleaseOps.publishRelease();
+```
 
 ## Contributing
 
