@@ -1,3 +1,7 @@
+v3.3.0 - September 11, 2024
+
+* [`2e6f2e6`](https://github.com/eslint/eslint-release/commit/2e6f2e6881d9bf18e8bf794258c880b64b98e136) feat: Support updates to previous major versions (#62) (Milos Djermanovic)
+
 v3.2.2 - February 21, 2024
 
 * [`e419afd`](https://github.com/eslint/eslint-release/commit/e419afdcb6465fe44ed23cbd93861a3757fbb56d) chore: remove dependency shelljs (#61) (Francesco Trotta)
