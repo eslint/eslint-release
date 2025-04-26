@@ -11,7 +11,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const assert = require("chai").assert,
+const assert = require("assert"),
     fs = require("fs"),
     leche = require("leche"),
     os = require("os"),

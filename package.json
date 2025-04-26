@@ -39,7 +39,6 @@
   },
   "homepage": "https://github.com/eslint/eslint-release#readme",
   "devDependencies": {
-    "chai": "^4.2.0",
     "eslint": "^7.25.0",
     "eslint-config-eslint": "^7.0.0",
     "eslint-plugin-jsdoc": "^32.3.1",
