@@ -11,7 +11,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const assert = require("node:assert"),
+const assert = require("assert"),
     sinon = require("sinon"),
     path = require("path"),
     leche = require("leche"),
