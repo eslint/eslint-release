@@ -11,7 +11,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const assert = require("chai").assert,
+const assert = require("node:assert"),
     sinon = require("sinon"),
     path = require("path"),
     leche = require("leche"),
