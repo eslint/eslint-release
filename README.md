@@ -53,7 +53,7 @@ This command publishes the generate npm package and pushes the changes to GitHub
 You can optionally include the release tool in another Node.js script:
 
 ```js
-var ReleaseOps = require("eslint-release");
+const ReleaseOps = require("eslint-release");
 ```
 
 ## What It Does
