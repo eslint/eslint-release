@@ -12,7 +12,7 @@
     "eslint-publish-release": "./bin/eslint-publish-release.js"
   },
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint",
     "release:generate:latest": "node ./bin/eslint-generate-release.js",
     "release:generate:alpha": "node ./bin/eslint-generate-prerelease.js alpha",
     "release:generate:beta": "node ./bin/eslint-generate-prerelease.js beta",
@@ -39,10 +39,9 @@
   },
   "homepage": "https://github.com/eslint/eslint-release#readme",
   "devDependencies": {
-    "eslint": "^7.25.0",
-    "eslint-config-eslint": "^7.0.0",
-    "eslint-plugin-jsdoc": "^32.3.1",
-    "eslint-plugin-node": "^11.1.0",
+    "eslint": "^9.35.0",
+    "eslint-config-eslint": "^13.0.0",
+    "globals": "^16.4.0",
     "leche": "^2.3.0",
     "mocha": "^6.1.4",
     "sinon": "^1.17.2"
