@@ -13,7 +13,8 @@ module.exports = defineConfig([
             "require-unicode-regexp": "off",
             "n/no-process-exit": "off",
             "n/no-unsupported-features/es-syntax": "off",
-        }
+            "unicorn/prefer-at": "off", // `Array.prototype.at` is supported in Node.js 16.6+
+        },
     },
     {
         files: ["tests/**/*.js"],
