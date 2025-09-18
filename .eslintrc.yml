@@ -1,9 +1,0 @@
-env:
-  node: true
-extends: "eslint-config-eslint"
-parserOptions:
-  ecmaVersion: 2021
-rules:
-  no-console: 0  
-  require-unicode-regexp: 0
-  node/no-process-exit: 0
