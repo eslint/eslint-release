@@ -16,7 +16,7 @@ module.exports = defineConfig([
         },
     },
     {
-        files: ["tests/**/*.js"],
+        files: ["tests/**/*.test.js"],
         languageOptions: {
             globals: {
                 ...globals.mocha
