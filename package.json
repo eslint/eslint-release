@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/eslint/eslint-release#readme",
   "devDependencies": {
-    "eslint": "^9.35.0",
+    "eslint": "^9.36.0",
     "eslint-config-eslint": "^13.0.0",
     "globals": "^16.4.0",
     "leche": "^2.3.0",
