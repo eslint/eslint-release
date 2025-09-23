@@ -19,7 +19,7 @@
     "release:generate:beta": "node ./bin/eslint-generate-prerelease.js beta",
     "release:generate:rc": "node ./bin/eslint-generate-prerelease.js rc",
     "release:publish": "node ./bin/eslint-publish-release.js",
-    "test": "mocha tests/lib/*.js"
+    "test": "mocha \"tests/**/*.test.js\""
   },
   "files": [
     "bin",
