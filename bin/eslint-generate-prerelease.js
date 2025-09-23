@@ -29,7 +29,7 @@ const args = process.argv.slice(2),
 // there must be a prerelease ID
 if (!prereleaseId) {
     console.log("Missing prerelease identifier (alpha, beta, rc, etc.).");
-    process.exit(1); // eslint-disable-line no-process-exit
+    process.exit(1);
 }
 
 ReleaseOps.generateRelease(prereleaseId);

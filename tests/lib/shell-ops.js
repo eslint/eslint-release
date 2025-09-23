@@ -11,9 +11,9 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const assert = require("assert"),
+const assert = require("node:assert"),
     sinon = require("sinon"),
-    path = require("path"),
+    path = require("node:path"),
     leche = require("leche"),
     ShellOps = require("../../lib/shell-ops");
 
@@ -51,7 +51,7 @@ describe("ShellOps", () => {
 
     describe("execSilent()", () => {
 
-        const childProcess = require("child_process");
+        const childProcess = require("node:child_process");
 
         const CMD = "foo bar baz",
             ENV = ShellOps.getModifiedEnv();
@@ -103,7 +103,7 @@ describe("ShellOps", () => {
 
     describe("exec()", () => {
 
-        const childProcess = require("child_process");
+        const childProcess = require("node:child_process");
 
         const CMD = "foo bar baz",
             ENV = ShellOps.getModifiedEnv();

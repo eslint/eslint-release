@@ -12,3 +12,4 @@ versions.json
 .eslintcache
 .cache
 **/node_modules
+*.code-workspace
