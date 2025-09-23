@@ -11,11 +11,11 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const assert = require("assert"),
-    fs = require("fs"),
+const assert = require("node:assert"),
+    fs = require("node:fs"),
     leche = require("leche"),
-    os = require("os"),
-    path = require("path"),
+    os = require("node:os"),
+    path = require("node:path"),
     sinon = require("sinon"),
     ReleaseOps = require("../../lib/release-ops");
 
