@@ -13,3 +13,6 @@ versions.json
 .cache
 **/node_modules
 *.code-workspace
+
+# Automatically generated files by GitHub Actions workflow
+tools/update-readme.js
