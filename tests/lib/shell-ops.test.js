@@ -28,25 +28,26 @@ describe("ShellOps", () => {
 
     describe("getModifiedEnv()", () => {
 
-        it("should modify path correctly when on Windows", () => {
-            const env = ShellOps.getModifiedEnv("win32");
+        if(process.platform === "win32") {
+            it("should modify path correctly when on Windows", () => {
+                const env = ShellOps.getModifiedEnv("win32");
 
-            assert.strictEqual(env.PATH, `${NODE_MODULES_PATH};${PATH}`);
-        });
-
-        leche.withData([
-            "darwin",
-            "freebsd",
-            "linux",
-            "sunos"
-        ], platform => {
-            it("should modify path correctly when on Unix OS", () => {
-                const env = ShellOps.getModifiedEnv(platform);
-
-                assert.strictEqual(env.PATH, `${NODE_MODULES_PATH}:${PATH}`);
+                assert.strictEqual(env.PATH, `${NODE_MODULES_PATH};${PATH}`);
             });
-        });
+        } else {
+            leche.withData([
+                "darwin",
+                "freebsd",
+                "linux",
+                "sunos"
+            ], platform => {
+                it("should modify path correctly when on Unix OS", () => {
+                    const env = ShellOps.getModifiedEnv(platform);
 
+                    assert.strictEqual(env.PATH, `${NODE_MODULES_PATH}:${PATH}`);
+                });
+            });
+        }
     });
 
     describe("execSilent()", () => {
