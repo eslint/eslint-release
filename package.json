@@ -44,7 +44,7 @@
     "eslint-config-eslint": "^13.0.0",
     "globals": "^16.4.0",
     "mocha": "^11.0.0",
-    "sinon": "^1.17.2"
+    "sinon": "^21.0.0"
   },
   "dependencies": {
     "dateformat": "^3.0.3",
