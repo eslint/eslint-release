@@ -13,7 +13,6 @@
 
 const assert = require("node:assert"),
     fs = require("node:fs"),
-    leche = require("leche"),
     os = require("node:os"),
     path = require("node:path"),
     sinon = require("sinon"),
@@ -26,8 +25,7 @@ const assert = require("node:assert"),
 describe("ReleaseOps", () => {
 
     describe("getPrereleaseVersion()", () => {
-
-        leche.withData([
+        [
             ["1.0.0", "alpha", "major", "2.0.0-alpha.0"],
             ["1.0.0", "alpha", "minor", "1.1.0-alpha.0"],
             ["1.0.0", "alpha", "patch", "1.0.1-alpha.0"],
@@ -37,10 +35,9 @@ describe("ReleaseOps", () => {
             ["2.0.0-alpha.0", "alpha", "patch", "2.0.0-alpha.1"],
 
             ["2.0.0-alpha.1", "beta", "patch", "2.0.0-beta.0"]
+        ].forEach(([version, prereleaseId, releaseType, expected]) => {
 
-        ], (version, prereleaseId, releaseType, expected) => {
-
-            it("should return the correct next version", () => {
+            it(`(with ${version}, ${prereleaseId}, ${releaseType}, ${expected}) should return the correct next version`, () => {
                 const result = ReleaseOps.getPrereleaseVersion(version, prereleaseId, releaseType);
 
                 assert.strictEqual(result, expected);
