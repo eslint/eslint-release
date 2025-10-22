@@ -14,7 +14,6 @@
 const assert = require("node:assert"),
     sinon = require("sinon"),
     path = require("node:path"),
-    leche = require("leche"),
     ShellOps = require("../../lib/shell-ops");
 
 //------------------------------------------------------------------------------
