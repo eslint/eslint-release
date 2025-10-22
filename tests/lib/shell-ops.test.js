@@ -14,7 +14,6 @@
 const assert = require("node:assert"),
     sinon = require("sinon"),
     path = require("node:path"),
-    leche = require("leche"),
     ShellOps = require("../../lib/shell-ops");
 
 //------------------------------------------------------------------------------
@@ -34,12 +33,12 @@ describe("ShellOps", () => {
             assert.strictEqual(env.PATH, `${NODE_MODULES_PATH};${PATH}`);
         });
 
-        leche.withData([
+        [
             "darwin",
             "freebsd",
             "linux",
             "sunos"
-        ], platform => {
+        ].forEach(platform => {
             it("should modify path correctly when on Unix OS", () => {
                 const env = ShellOps.getModifiedEnv(platform);
 
