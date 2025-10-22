@@ -39,7 +39,7 @@ describe("ShellOps", () => {
             "linux",
             "sunos"
         ].forEach(platform => {
-            it("should modify path correctly when on Unix OS", () => {
+            it(`(with ${platform}) should modify path correctly when on Unix OS`, () => {
                 const env = ShellOps.getModifiedEnv(platform);
 
                 assert.strictEqual(env.PATH, `${NODE_MODULES_PATH}:${PATH}`);

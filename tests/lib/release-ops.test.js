@@ -37,7 +37,7 @@ describe("ReleaseOps", () => {
             ["2.0.0-alpha.1", "beta", "patch", "2.0.0-beta.0"]
         ].forEach(([version, prereleaseId, releaseType, expected]) => {
 
-            it("should return the correct next version", () => {
+            it(`(with ${version}, ${prereleaseId}, ${releaseType}, ${expected}) should return the correct next version`, () => {
                 const result = ReleaseOps.getPrereleaseVersion(version, prereleaseId, releaseType);
 
                 assert.strictEqual(result, expected);
