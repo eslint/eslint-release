@@ -35,13 +35,13 @@ describe("ShellOps", () => {
                 assert.strictEqual(env.PATH, `${NODE_MODULES_PATH};${PATH}`);
             });
         } else {
-            leche.withData([
+            [
                 "darwin",
                 "freebsd",
                 "linux",
                 "sunos"
-            ], platform => {
-                it("should modify path correctly when on Unix OS", () => {
+            ].forEach(platform => {
+                it(`(with ${platform}) should modify path correctly when on Unix OS`, () => {
                     const env = ShellOps.getModifiedEnv(platform);
 
                     assert.strictEqual(env.PATH, `${NODE_MODULES_PATH}:${PATH}`);

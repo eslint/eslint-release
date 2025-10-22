@@ -26,6 +26,11 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node: [25.x, 24.x, 22.x, 20.x, 18.x]
+        include:
+          - os: windows-latest          
+            node: lts/*
+          - os: macOS-latest
+            node: lts/*
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v5
