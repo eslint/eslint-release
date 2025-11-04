@@ -57,7 +57,7 @@ describe("ShellOps", () => {
         let sandbox;
 
         beforeEach(() => {
-            sandbox = sinon.sandbox.create();
+            sandbox = sinon.createSandbox();
         });
 
         afterEach(() => {
@@ -109,7 +109,7 @@ describe("ShellOps", () => {
         let sandbox;
 
         beforeEach(() => {
-            sandbox = sinon.sandbox.create();
+            sandbox = sinon.createSandbox();
         });
 
         afterEach(() => {
