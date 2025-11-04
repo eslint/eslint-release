@@ -487,7 +487,7 @@ describe("ReleaseOps", () => {
         let tmpDir = null;
 
         beforeEach(() => {
-            sandbox = sinon.sandbox.create();
+            sandbox = sinon.createSandbox();
             tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "writeChangelog-"));
             process.chdir(tmpDir);
         });
