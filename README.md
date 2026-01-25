@@ -22,8 +22,8 @@ $ npm install eslint-release --save-dev
 
 To start, you'll need to define two environment variables:
 
-* `NPM_TOKEN` - a token to use for `npm publish`. The token must be from a user that has permission to publish the package.
-* `ESLINT_GITHUB_TOKEN` - a token for a GitHub user that has `repo` permission (used for posting release notes).
+- `NPM_TOKEN` - a token to use for `npm publish`. The token must be from a user that has permission to publish the package.
+- `ESLINT_GITHUB_TOKEN` - a token for a GitHub user that has `repo` permission (used for posting release notes).
 
 The ESLint release tool is designed to be used on the command line and is divided into two phases: package generation and package publishing.
 
@@ -77,8 +77,8 @@ When you do a prerelease, the same steps are taken except that package is publis
 
 This package exports two functions:
 
-* `generateRelease(prereleaseId, packageTag)` - This corresponds to the CLI command `eslint-generate-release` when `prereleaseId` is `undefined`, and the CLI command `eslint-generate-prerelease prereleaseId` when `prereleaseId` is a string value.
-* `publishRelease()` - This corresponds to the CLI command `eslint-publish-release`.
+- `generateRelease(prereleaseId, packageTag)` - This corresponds to the CLI command `eslint-generate-release` when `prereleaseId` is `undefined`, and the CLI command `eslint-generate-prerelease prereleaseId` when `prereleaseId` is a string value.
+- `publishRelease()` - This corresponds to the CLI command `eslint-publish-release`.
 
 `packageTag` is used as the `--tag` value in the `npm publish` command. It's also used to determine whether a regular release will be marked as Latest on GitHub: it will be marked as Latest only if `packageTag` is `"latest"`. This parameter is optional and defaults to `"latest"` when `prereleaseId` is `undefined`, `"next"` otherwise.
 
