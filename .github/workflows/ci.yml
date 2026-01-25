@@ -20,6 +20,7 @@ jobs:
               run: npm install
             - name: Lint files
               run: npm run lint
+              
     format:
         name: File Format
         runs-on: ubuntu-latest
