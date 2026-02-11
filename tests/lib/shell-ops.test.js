@@ -12,135 +12,119 @@
 //------------------------------------------------------------------------------
 
 const assert = require("node:assert"),
-    sinon = require("sinon"),
-    path = require("node:path"),
-    ShellOps = require("../../lib/shell-ops");
+	sinon = require("sinon"),
+	path = require("node:path"),
+	ShellOps = require("../../lib/shell-ops");
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
 describe("ShellOps", () => {
+	const PATH = process.env.PATH,
+		NODE_MODULES_PATH = path.resolve("./node_modules/.bin");
 
-    const PATH = process.env.PATH,
-        NODE_MODULES_PATH = path.resolve("./node_modules/.bin");
+	describe("getModifiedEnv()", () => {
+		it("should modify path correctly when on Windows", () => {
+			const env = ShellOps.getModifiedEnv("win32");
 
-    describe("getModifiedEnv()", () => {
+			assert.strictEqual(env.PATH, `${NODE_MODULES_PATH};${PATH}`);
+		});
 
-        it("should modify path correctly when on Windows", () => {
-            const env = ShellOps.getModifiedEnv("win32");
+		["darwin", "freebsd", "linux", "sunos"].forEach(platform => {
+			it(`(with ${platform}) should modify path correctly when on Unix OS`, () => {
+				const env = ShellOps.getModifiedEnv(platform);
 
-            assert.strictEqual(env.PATH, `${NODE_MODULES_PATH};${PATH}`);
-        });
+				assert.strictEqual(env.PATH, `${NODE_MODULES_PATH}:${PATH}`);
+			});
+		});
+	});
 
-        [
-            "darwin",
-            "freebsd",
-            "linux",
-            "sunos"
-        ].forEach(platform => {
-            it(`(with ${platform}) should modify path correctly when on Unix OS`, () => {
-                const env = ShellOps.getModifiedEnv(platform);
+	describe("execSilent()", () => {
+		const childProcess = require("node:child_process");
 
-                assert.strictEqual(env.PATH, `${NODE_MODULES_PATH}:${PATH}`);
-            });
-        });
+		const CMD = "foo bar baz",
+			ENV = ShellOps.getModifiedEnv();
+		let sandbox;
 
-    });
+		beforeEach(() => {
+			sandbox = sinon.createSandbox();
+		});
 
-    describe("execSilent()", () => {
+		afterEach(() => {
+			sandbox.verifyAndRestore();
+		});
 
-        const childProcess = require("node:child_process");
+		it("should call execSync with cwd and modified environment", () => {
+			sandbox
+				.mock(childProcess)
+				.expects("execSync")
+				.withExactArgs(CMD, {
+					cwd: process.cwd(),
+					env: ENV,
+				})
+				.returns("");
 
-        const CMD = "foo bar baz",
-            ENV = ShellOps.getModifiedEnv();
-        let sandbox;
+			ShellOps.execSilent(CMD);
+		});
 
-        beforeEach(() => {
-            sandbox = sinon.createSandbox();
-        });
+		it("should call execSync and pass through the return value", () => {
+			sandbox.stub(childProcess, "execSync").returns("hi");
 
-        afterEach(() => {
-            sandbox.verifyAndRestore();
-        });
+			const result = ShellOps.execSilent(CMD);
 
-        it("should call execSync with cwd and modified environment", () => {
+			assert.strictEqual(result, "hi");
+		});
 
-            sandbox.mock(childProcess)
-                .expects("execSync")
-                .withExactArgs(CMD, {
-                    cwd: process.cwd(),
-                    env: ENV
-                })
-                .returns("");
+		it("should call exit with an exit code when execSync throws an error", () => {
+			const err = new Error("Boo!");
 
-            ShellOps.execSilent(CMD);
-        });
+			err.output = [null, "Hi"];
+			err.status = 2;
 
-        it("should call execSync and pass through the return value", () => {
+			sandbox.stub(childProcess, "execSync").throws(err);
+			sandbox.mock(ShellOps).expects("exit").withExactArgs(err.status);
+			ShellOps.execSilent(CMD);
+		});
+	});
 
-            sandbox.stub(childProcess, "execSync").returns("hi");
+	describe("exec()", () => {
+		const childProcess = require("node:child_process");
 
-            const result = ShellOps.execSilent(CMD);
+		const CMD = "foo bar baz",
+			ENV = ShellOps.getModifiedEnv();
+		let sandbox;
 
-            assert.strictEqual(result, "hi");
-        });
+		beforeEach(() => {
+			sandbox = sinon.createSandbox();
+		});
 
-        it("should call exit with an exit code when execSync throws an error", () => {
+		afterEach(() => {
+			sandbox.verifyAndRestore();
+		});
 
-            const err = new Error("Boo!");
+		it("should call execSync with cwd and modified environment", () => {
+			sandbox
+				.mock(childProcess)
+				.expects("execSync")
+				.withExactArgs(CMD, {
+					cwd: process.cwd(),
+					env: ENV,
+				})
+				.returns("");
 
-            err.output = [null, "Hi"];
-            err.status = 2;
+			ShellOps.exec(CMD);
+		});
 
-            sandbox.stub(childProcess, "execSync").throws(err);
-            sandbox.mock(ShellOps).expects("exit").withExactArgs(err.status);
-            ShellOps.execSilent(CMD);
-        });
+		it("should exit with an exit code when execSync throws an error", () => {
+			const err = new Error("Boo!");
 
-    });
+			err.output = [null, "Hi"];
+			err.status = 2;
 
-    describe("exec()", () => {
-
-        const childProcess = require("node:child_process");
-
-        const CMD = "foo bar baz",
-            ENV = ShellOps.getModifiedEnv();
-        let sandbox;
-
-        beforeEach(() => {
-            sandbox = sinon.createSandbox();
-        });
-
-        afterEach(() => {
-            sandbox.verifyAndRestore();
-        });
-
-        it("should call execSync with cwd and modified environment", () => {
-
-            sandbox.mock(childProcess)
-                .expects("execSync")
-                .withExactArgs(CMD, {
-                    cwd: process.cwd(),
-                    env: ENV
-                })
-                .returns("");
-
-            ShellOps.exec(CMD);
-        });
-
-        it("should exit with an exit code when execSync throws an error", () => {
-
-            const err = new Error("Boo!");
-
-            err.output = [null, "Hi"];
-            err.status = 2;
-
-            sandbox.stub(childProcess, "execSync").throws(err);
-            sandbox.mock(ShellOps).expects("exit").withExactArgs(err.status);
-            ShellOps.exec(CMD);
-        });
-
-    });
-
+			sandbox.stub(childProcess, "execSync").throws(err);
+			sandbox.mock(ShellOps).expects("exit").withExactArgs(err.status);
+			ShellOps.exec(CMD);
+		});
+	});
 });

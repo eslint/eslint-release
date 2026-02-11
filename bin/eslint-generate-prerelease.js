@@ -24,12 +24,12 @@ const ReleaseOps = require("../lib/release-ops");
  * $ eslint-generate-prerelease beta
  */
 const args = process.argv.slice(2),
-    prereleaseId = (args.length ? args[0] : null);
+	prereleaseId = args.length ? args[0] : null;
 
 // there must be a prerelease ID
 if (!prereleaseId) {
-    console.log("Missing prerelease identifier (alpha, beta, rc, etc.).");
-    process.exit(1);
+	console.log("Missing prerelease identifier (alpha, beta, rc, etc.).");
+	process.exit(1);
 }
 
 ReleaseOps.generateRelease(prereleaseId);
