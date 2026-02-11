@@ -12,6 +12,7 @@ versions.json
 .eslintcache
 .cache
 **/node_modules
+.vscode
 *.code-workspace
 
 # Automatically generated files by GitHub Actions workflow
