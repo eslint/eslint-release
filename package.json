@@ -14,6 +14,8 @@
   "scripts": {
     "lint": "eslint",
     "lint:fix": "eslint --fix",
+    "fmt": "prettier --write .",
+    "fmt:check": "prettier --check .",
     "release:generate:latest": "node ./bin/eslint-generate-release.js",
     "release:generate:alpha": "node ./bin/eslint-generate-prerelease.js alpha",
     "release:generate:beta": "node ./bin/eslint-generate-prerelease.js beta",
@@ -40,10 +42,11 @@
   },
   "homepage": "https://github.com/eslint/eslint-release#readme",
   "devDependencies": {
-    "eslint": "^9.36.0",
+    "eslint": "^9.39.2",
     "eslint-config-eslint": "^13.0.0",
     "globals": "^17.0.0",
     "mocha": "^11.0.0",
+    "prettier": "3.8.1",
     "sinon": "^21.0.0"
   },
   "dependencies": {
